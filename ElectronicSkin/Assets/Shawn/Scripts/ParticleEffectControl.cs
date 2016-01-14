@@ -37,6 +37,8 @@ public class ParticleEffectControl : MonoBehaviour {
 	private Dictionary<Transform, Vector3> collisionObjsDict = new Dictionary<Transform, Vector3>();
 	private List<ParticleInfo> collsionObjList = new List<ParticleInfo>();
 
+
+
 	void Awake () {
 		bounds = GetComponent<BoxCollider>().bounds;
 		Destroy(GetComponent<MeshRenderer>());
@@ -135,7 +137,11 @@ public class ParticleEffectControl : MonoBehaviour {
 
 		for (int i = 0; i < Count; i++)
 		{
-			particle[i + lastCount].position = meshCtrl.SkinMesh.transform.TransformPoint(selectVecter3[i])
+			if(meshCtrl.BodyMeshType == MeshType.SkinMesh)
+				particle[i + lastCount].position = meshCtrl.SkinMesh.transform.TransformPoint(selectVecter3[i])
+			+ new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * blurRate;
+			else
+				particle[i + lastCount].position = meshCtrl.BodyMesh.transform.TransformPoint(selectVecter3[i])
 			+ new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * blurRate;
 
 			Vector3 OutwardV3 = particle[i + lastCount].position - transform.position;

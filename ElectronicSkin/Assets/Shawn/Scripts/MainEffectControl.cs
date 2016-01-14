@@ -13,11 +13,18 @@ public enum CharacterColor
 	WHITE
 }
 
+public enum MeshType {
+	SkinMesh,
+	StaticMesh,
+}
+
 public class MainEffectControl : MonoBehaviour {
 	public CharacterColor MainColor = CharacterColor.WHITE;
 	public GameObject Character;
+	public MeshType BodyMeshType;
 	[System.NonSerialized]
 	public SkinnedMeshRenderer SkinMesh;
+	public MeshFilter BodyMesh;
 	private Transform meshTransform;
 
 	public Color[] Colors;
@@ -45,11 +52,19 @@ public class MainEffectControl : MonoBehaviour {
 		{
 			totalPercent += i;
 		}
-		SkinMesh = GetComponentInChildren<SkinnedMeshRenderer>();		
+			
 		particleCtrls = Character.GetComponentsInChildren<ParticleEffectControl>();
 
 		Mesh bake = new Mesh();
-		SkinMesh.BakeMesh(bake);
+		if (BodyMeshType == MeshType.SkinMesh)
+		{
+			SkinMesh = GetComponentInChildren<SkinnedMeshRenderer>();
+			SkinMesh.BakeMesh(bake);
+		}
+		else
+		{
+			bake = BodyMesh.mesh;
+        }		
 		meshPointPosition = bake.vertices;
 		//meshPointPosition = new Vector3[bake.vertexCount];
 		//      for ( int i = 0; i < bake.vertexCount; i++ )
@@ -73,9 +88,18 @@ public class MainEffectControl : MonoBehaviour {
 		{
 			foreach (ParticleEffectControl pCtrls in particleCtrls)
 			{
-                if (pCtrls.bounds.Contains(SkinMesh.transform.TransformPoint(meshPointPosition[i])))
-					pCtrls.meshID.Add(i);
-            }
+				if (BodyMeshType == MeshType.SkinMesh)
+				{
+					if (pCtrls.bounds.Contains(SkinMesh.transform.TransformPoint(meshPointPosition[i])))
+						pCtrls.meshID.Add(i);
+				}					
+				else
+				{
+					if (pCtrls.bounds.Contains(BodyMesh.transform.TransformPoint(meshPointPosition[i])))
+						pCtrls.meshID.Add(i);
+				}
+					
+			}
 		}
 
 		MainEffectControl self = GetComponent<MainEffectControl>();
@@ -91,9 +115,12 @@ public class MainEffectControl : MonoBehaviour {
 
 	void set()
 	{
-		Mesh bake = new Mesh();
-		SkinMesh.BakeMesh(bake);
-		meshPointPosition = bake.vertices;
+		if (BodyMeshType == MeshType.SkinMesh)
+		{
+			Mesh bake = new Mesh();
+			SkinMesh.BakeMesh(bake);
+			meshPointPosition = bake.vertices;
+		}			
 	}
 
 	public Vector3[] GetMeshPoint ( int[] meshID )
