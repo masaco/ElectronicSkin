@@ -9,7 +9,7 @@ public enum CharacterColor
 	YELLOW,
 	GREEN,
 	BLUE,
-	VIOLET,
+	PURPLE,
 	WHITE
 }
 
@@ -43,8 +43,19 @@ public class MainEffectControl : MonoBehaviour {
 	[System.NonSerialized]
 	public int ID;
 
+	public bool isPlayer;
+
+	private bool isReInit;
+
 	void Awake ()
 	{
+		
+		if (GetComponentInChildren<Camera>())
+			isPlayer = true;
+
+		if (isPlayer)
+			InvokeRepeating("Unload", 25f, 25f);
+
 		ID = Random.Range( 100000, 999999 );
 		FillRate = Mathf.Clamp01(FillRate);
 		InitColor();
@@ -52,38 +63,54 @@ public class MainEffectControl : MonoBehaviour {
 		{
 			totalPercent += i;
 		}
-			
+
 		particleCtrls = Character.GetComponentsInChildren<ParticleEffectControl>();
 
 		Mesh bake = new Mesh();
 		if (BodyMeshType == MeshType.SkinMesh)
 		{
 			SkinMesh = GetComponentInChildren<SkinnedMeshRenderer>();
-			SkinMesh.BakeMesh(bake);
+			SkinMesh.BakeMesh(bake);			
+			
+			Animator Anim = GetComponent<Animator>();
+			foreach (ParticleEffectControl peCtrl in GetComponentsInChildren<ParticleEffectControl>())
+			{
+				switch (peCtrl.name)
+				{
+					case "Head": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Head).transform; break;
+					case "Chest": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Chest).transform; break;
+					case "Spine": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Spine).transform; break;
+					case "Hips": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Hips).transform; break;
+					case "RightUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperArm).transform; break;
+					case "RightLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerArm).transform; break;
+					case "RightHand": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightHand).transform; break;
+					case "LeftUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform; break;
+					case "LeftLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; break;
+					case "LeftHand": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftHand).transform; break;
+					case "RightUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).transform; break;
+					case "RightLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerLeg).transform; break;
+					case "RightFoot": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightFoot).transform; break;
+					case "LeftUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperLeg).transform; break;
+					case "LeftLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerLeg).transform; break;
+					case "LeftFoot": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftFoot).transform; break;
+				}
+			}
+					
 		}
 		else
 		{
 			bake = BodyMesh.mesh;
         }		
 		meshPointPosition = bake.vertices;
-		//meshPointPosition = new Vector3[bake.vertexCount];
-		//      for ( int i = 0; i < bake.vertexCount; i++ )
-		//{
-		//	Vector3 tempV3 = bake.vertices[i];
-		//	if (float.IsNaN(tempV3.x)) tempV3.x = 0f; 
-		//	else if (float.IsInfinity(tempV3.x)) tempV3.x = 1f;
-		//	if (float.IsNaN(tempV3.y)) tempV3.y = 0f;
-		//	else if (float.IsInfinity(tempV3.y)) tempV3.y = 1f;
-		//	if (float.IsNaN(tempV3.z)) tempV3.z = 0f;
-		//	else if (float.IsInfinity(tempV3.z)) tempV3.z = 1f;
-
-		//	meshPointPosition[i] = tempV3;
-		//      }
 	}
+
+	void Unload()
+	{
+		Resources.UnloadUnusedAssets();
+    }
 
     void Start () {
 
-		
 		for ( int i = 0; i < meshPointPosition.Length; i++ )
 		{
 			foreach (ParticleEffectControl pCtrls in particleCtrls)
@@ -110,7 +137,20 @@ public class MainEffectControl : MonoBehaviour {
         }
 
 		StartCoroutine(reflash());
+		isReInit = true;
 
+	}
+
+	void ReInit()
+	{
+		if (isReInit)
+		{
+			MainEffectControl self = GetComponent<MainEffectControl>();
+			foreach (ParticleEffectControl pCtrls in particleCtrls)
+			{
+				pCtrls.Init(self);
+			}
+		}
 	}
 
 	void set()
@@ -156,7 +196,7 @@ public class MainEffectControl : MonoBehaviour {
 				case CharacterColor.YELLOW: mainColor	= new Color(255f, 237f, 0f, 255f) / 255f;	break;
 				case CharacterColor.GREEN: mainColor	= new Color(0f, 255f, 76f, 255f) / 255f;	break;
 				case CharacterColor.BLUE: mainColor		= new Color(0f, 44f, 255f, 255f) / 255f;	break;
-				case CharacterColor.VIOLET: mainColor	= new Color(251,0f, 255f, 255f) / 255f;		break;
+				case CharacterColor.PURPLE: mainColor	= new Color(251,0f, 255f, 255f) / 255f;		break;
 			}
 
 			for (int i = 0; i < 4; i++)

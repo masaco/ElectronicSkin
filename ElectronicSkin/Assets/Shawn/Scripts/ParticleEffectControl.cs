@@ -7,6 +7,7 @@ public class ParticleInfo
 	public Transform TargetTransform;
 	public Vector3 CollisionCenter;
 	public Color[] TargetMainColor;
+	public int ColorID;
 }
 
 #pragma warning disable 0414, 0618
@@ -37,7 +38,8 @@ public class ParticleEffectControl : MonoBehaviour {
 	private Dictionary<Transform, Vector3> collisionObjsDict = new Dictionary<Transform, Vector3>();
 	private List<ParticleInfo> collsionObjList = new List<ParticleInfo>();
 
-
+	[System.NonSerialized]
+	public int ColorID;
 
 	void Awake () {
 		bounds = GetComponent<BoxCollider>().bounds;
@@ -57,16 +59,36 @@ public class ParticleEffectControl : MonoBehaviour {
 		fillRate		= meshCtrl.FillRate;
 		blurRate		= meshCtrl.BlurRate;
 		reflashRate		= meshCtrl.SubReflashRate;
-
-		ps = GetComponent<ParticleSystem>();
+		ColorID			= Mathf.FloorToInt( Mathf.Pow(2f ,meshCtrl.MainColor.GetHashCode()));
+        ps = GetComponent<ParticleSystem>();
 		particle = new ParticleSystem.Particle[ps.maxParticles];
+		if (meshCtrl.isPlayer)
+			ps.startSize = 0.003f;
 		Count = Mathf.FloorToInt(meshID.Count * fillRate);
+		ps.startSize = 0.0001f;
 		StartCoroutine(reflash());
+		StartCoroutine(FadeInParticle());
+    }
+
+	IEnumerator FadeInParticle()
+	{
+		float during = 0f;
+		while (during < 1f)
+		{
+			yield return new WaitForEndOfFrame();
+			during += Time.deltaTime;
+			ps.startSize = 0.0005f + 0.0045f * during/1f;
+		}
 	}
+
+	void FadeOutParticle( )
+	{
+		ps.startSize *= 0.8f;
+    }
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.name.Contains(keyWord))
+		if (other.name.Contains(keyWord) || other.tag == "Untagged")
 		{
 			return;
 		}
@@ -87,10 +109,12 @@ public class ParticleEffectControl : MonoBehaviour {
 		if (!isTargetInList)
 		{
 			ParticleInfo tempInfo = new ParticleInfo();
-			tempInfo.TargetTransform = other.transform;
-			tempInfo.TargetMainColor = other.GetComponent<ParticleEffectControl>().Colors;
+			ParticleEffectControl peCtrl = other.GetComponent<ParticleEffectControl>();
+            tempInfo.TargetTransform = other.transform;
+			tempInfo.TargetMainColor = peCtrl.Colors;
 			tempInfo.CollisionCenter = other.transform.position * 0.5f + transform.position * 0.5f;
-			collsionObjList.Add(tempInfo);
+			tempInfo.ColorID = peCtrl.ColorID;
+            collsionObjList.Add(tempInfo);
 		}
 	}
 
@@ -134,8 +158,8 @@ public class ParticleEffectControl : MonoBehaviour {
 			selectedID[i] = meshID[Random.Range(0, meshID.Count)];
 
 		Vector3[] selectVecter3 = meshCtrl.GetMeshPoint(selectedID);
-
-		for (int i = 0; i < Count; i++)
+		
+        for (int i = 0; i < Count; i++)
 		{
 			if(meshCtrl.BodyMeshType == MeshType.SkinMesh)
 				particle[i + lastCount].position = meshCtrl.SkinMesh.transform.TransformPoint(selectVecter3[i])
@@ -169,14 +193,18 @@ public class ParticleEffectControl : MonoBehaviour {
 				float Area = Mathf.Clamp(MaxArea - disToCollisionCenter, 0, MaxArea);
 				if (disToCollisionCenter < Area)
 				{
-					float fadeValue = 4f;
+					float fadeValue = 3f;
+					Color targetColor = ColorConvert.HSVBlend(RandColor(Colors), RandColor(tempInfo.TargetMainColor));
+					//Color blendColor = (RandColor(Colors) * disToCollisionCenter / fadeValue
+					//	+ ColorConvert.ColorBlend(RandColor(Colors), RandColor(tempInfo.TargetMainColor)) * (Area - disToCollisionCenter) * fadeValue)
+					//	/ MaxArea;
 					Color blendColor = (RandColor(Colors) * disToCollisionCenter / fadeValue
-						+ ColorConvert.ColorBlend(RandColor(Colors), RandColor(tempInfo.TargetMainColor)) * (Area - disToCollisionCenter) * fadeValue)
+						+ ColorConvert.HSVBlend(RandColor(Colors), RandColor(tempInfo.TargetMainColor)) * (Area - disToCollisionCenter) * fadeValue)
 						/ MaxArea;
 
-					float blendAlpha = 1f;
-					if (collisionObjsDict.ContainsKey(tempInfo.TargetTransform))
-						blendAlpha -= collisionObjsDict[tempInfo.TargetTransform].magnitude / Area;
+					//float blendAlpha = 1f;
+					//if (collisionObjsDict.ContainsKey(tempInfo.TargetTransform))
+					//	blendAlpha -= collisionObjsDict[tempInfo.TargetTransform].magnitude / Area;
 					particle[i + lastCount].color = new Color(blendColor.r, blendColor.g, blendColor.b, 1f);
 
 					particle[i + lastCount].velocity = GetCompositionVector() * Random.Range(0.4f, 0.8f)

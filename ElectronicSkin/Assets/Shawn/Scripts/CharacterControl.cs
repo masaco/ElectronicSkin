@@ -33,6 +33,10 @@ public class CharacterControl : MonoBehaviour {
 
 		if (Control)
 		{
+			if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+				animator.SetBool("Walk", true);
+			else
+				animator.SetBool("Walk", false);
 			transform.Translate( new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * Time.deltaTime);
 		}
 			
