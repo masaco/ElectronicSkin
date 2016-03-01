@@ -19,6 +19,7 @@ public enum MeshType {
 }
 
 public class MainEffectControl : MonoBehaviour {
+	#region Base Variable
 	public CharacterColor MainColor = CharacterColor.WHITE;
 	public GameObject Character;
 	public MeshType BodyMeshType;
@@ -32,8 +33,8 @@ public class MainEffectControl : MonoBehaviour {
 	[System.NonSerialized]
 	public int totalPercent;
 
-	public float reflashRate = 0.05f;
-	public float SubReflashRate = 0.1f;
+	private float reflashRate = 0.15f;
+	//public float SubReflashRate = 0.05f;
 	public float FillRate = 0.1f;
 	public float BlurRate = 0.01f;
 
@@ -46,6 +47,7 @@ public class MainEffectControl : MonoBehaviour {
 	public bool isPlayer;
 
 	private bool isReInit;
+	#endregion
 
 	void Awake ()
 	{
@@ -73,6 +75,7 @@ public class MainEffectControl : MonoBehaviour {
 			SkinMesh.BakeMesh(bake);			
 			
 			Animator Anim = GetComponent<Animator>();
+			#region Init Skeleton
 			foreach (ParticleEffectControl peCtrl in GetComponentsInChildren<ParticleEffectControl>())
 			{
 				switch (peCtrl.name)
@@ -95,7 +98,8 @@ public class MainEffectControl : MonoBehaviour {
 					case "LeftFoot": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftFoot).transform; break;
 				}
 			}
-					
+			#endregion
+
 		}
 		else
 		{
@@ -106,11 +110,13 @@ public class MainEffectControl : MonoBehaviour {
 
 	void Unload()
 	{
+		//Debug.Log("Unload");
 		Resources.UnloadUnusedAssets();
     }
 
     void Start () {
 
+		#region Switch SkinMesh or NormalMesh
 		for ( int i = 0; i < meshPointPosition.Length; i++ )
 		{
 			foreach (ParticleEffectControl pCtrls in particleCtrls)
@@ -128,19 +134,24 @@ public class MainEffectControl : MonoBehaviour {
 					
 			}
 		}
+		#endregion
 
+		#region Rename Particle Control Object
 		MainEffectControl self = GetComponent<MainEffectControl>();
 		foreach (ParticleEffectControl pCtrls in particleCtrls)
 		{
-			pCtrls.name = ID + "_ParticleControl";
+			pCtrls.name = ID + "_"+ pCtrls.name;
 			pCtrls.Init(self);
         }
+		#endregion
 
-		StartCoroutine(reflash());
+		//StartCoroutine(reflash());
+		InvokeRepeating("set", 0f, reflashRate);
 		isReInit = true;
 
 	}
 
+	#region Base Function
 	void ReInit()
 	{
 		if (isReInit)
@@ -173,7 +184,7 @@ public class MainEffectControl : MonoBehaviour {
         }
 		return tempV3array;
     }
-
+	
 	IEnumerator reflash()
 	{
 		while (true)
@@ -207,4 +218,5 @@ public class MainEffectControl : MonoBehaviour {
         }
 		
 	}
+	#endregion
 }

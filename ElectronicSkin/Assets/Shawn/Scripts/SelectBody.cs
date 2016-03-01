@@ -44,6 +44,8 @@ public class SelectBody : MonoBehaviour {
 	void Update () {
 		if (!isReady)
 			return;
+
+		#region Character Control
 		cam.transform.localEulerAngles += Vector3.right*  Input.GetAxis("Mouse Y")*-1;
 		transform.localEulerAngles += Vector3.up * Input.GetAxis("Mouse X");
 
@@ -67,7 +69,9 @@ public class SelectBody : MonoBehaviour {
 			animator.SetBool("Walk", false);
 
 		transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * Time.deltaTime, Space.Self);
+		#endregion
 
+		#region Character Select
 		if (!isFadeSwitch && isFaceMirror)
 		{
 			if (Input.GetKeyDown(KeyCode.O))
@@ -87,6 +91,7 @@ public class SelectBody : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.End) && fadeState == FadeState.Ready)
 				StartCoroutine(Fade(-1));
 		}
+		#endregion
 	}
 
 	void OnTriggerEnter(Collider other)
