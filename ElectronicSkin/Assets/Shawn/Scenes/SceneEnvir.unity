@@ -293,6 +293,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rest: 0
   Control: 0
+--- !u!1 &1289172034 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 160412, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
+  m_PrefabInternal: {fileID: 2067175881}
+--- !u!64 &1289172038
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289172034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 2f445ed73205e7c4c90b8a64c0090383, type: 3}
 --- !u!1 &1469345419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2301,14 @@ Prefab:
     - target: {fileID: 115898, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115898, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 160412, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
+      propertyPath: m_TagString
+      value: CollisionObj
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
