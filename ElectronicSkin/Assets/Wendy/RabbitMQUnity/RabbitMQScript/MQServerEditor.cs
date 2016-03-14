@@ -4,8 +4,8 @@ using System.Collections;
 public class MQServerEditor : MonoBehaviour {
 
 	public static string serverIP = "wearable.nccu.edu.tw";
-	public static string topicName = "demo.EXCHANGE1";
-	private string defaultIp = "192.168.1.161";
+	public static string topicName = "wise.local.action";
+	private string defaultIp = "192.168.1.2";
 	//private string defaultTopic = "demo.EXCHANGE1";
 	public bool useDefaultIp = false;
 
@@ -31,7 +31,7 @@ public class MQServerEditor : MonoBehaviour {
 
 	void OnGUI ()
 	{
-		if( useDefaultIp ) return;
+/*		if( useDefaultIp ) return;
 		if( isServerStart ) return;
 
 
@@ -56,6 +56,6 @@ public class MQServerEditor : MonoBehaviour {
 
 		GUILayout.EndVertical();
 
-		GUILayout.EndArea();
+		GUILayout.EndArea();*/
 	}
 }

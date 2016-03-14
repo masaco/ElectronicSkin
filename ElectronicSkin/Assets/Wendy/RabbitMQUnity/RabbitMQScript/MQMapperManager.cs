@@ -10,11 +10,14 @@ public class MQMapperManager : MonoBehaviour {
 	public RabbitMQServer rabbitServer;
 	public GameObject skeletonObj;
 	public Transform skeletonRoot; // use for positions
+	public int PlayerIDWise
+	; // 讀取wise的id值
 	private MQMapperItem[] mappers;
 
 	// all saved messages
 	private List<string> messages;
 	public int messageBufferedLimit = 5;
+
 
 	void Awake ()
 	{
@@ -48,15 +51,26 @@ public class MQMapperManager : MonoBehaviour {
 	void LoadJsonRots ( string jsonString )
 	{
 		// convert pure string to json node
-		JSONNode nodes = JSON.Parse( jsonString );
+		JSONNode nodesAll = JSON.Parse( jsonString );
+
+		// 資料格式 "dataSet":[{"id":"1","data":{關節資料}}]
+		JSONNode nodes = nodesAll["dataSet"]; //存dataSet裡面的陣列資料
 
 		// if convert failed : not json format
-		if( nodes == null )
+		if( nodesAll == null || nodes[0]["id"] == null)
 		{
 			Debug.Log( "OOps convert fail : not json format" );
 			return;
 		}
-		
+
+		// 讀取wise的id值
+		PlayerIDWise = int.Parse(nodes[0]["id"]) ;  
+		// 資料格式 "dataSet":[{"id":"1","data":{關節資料}}]
+
+		//{"item_bag":[{"name":"apple", "price":20}, {"name":"sword", "price":300}, "test"]}
+		//jsonData["item_bag"][0]["name"] + ":" + jsonData["item_bag"][0]["price"]
+
+
 		// search is there data for skeletonNodes
 		for( int i=0; i< mappers.Length; i++ )
 		{

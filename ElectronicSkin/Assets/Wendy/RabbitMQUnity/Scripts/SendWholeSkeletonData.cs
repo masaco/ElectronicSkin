@@ -33,7 +33,8 @@ public class SendWholeSkeletonData : MonoBehaviour {
 			messageToShow += pointName + " : ( " + pointValues.x + "," + pointValues.y + "," + pointValues.z + " ) \n";
 		}
 
-		if (Input.GetMouseButtonDown(0))sender.SendMessageToServer(  "{\"id\":\"id1\",\"data\":{\"rightHand\":{\"action\":{\"vibrate\":{\"duration\":1000,\"interval\":1,\"times\":1}}}}}");
+		sender.SendMessageToServer( json.ToString() );
+		//sender.SendMessageToServer("\"id\":\"\",\"data\":{\"rightHand\":{ \"x\":0,\"y\":0,\"z\":0 },\"leftHand\":{ \"x\":0, \"y\":0, \"z\":0 },\"postion\":{\"x\":0.0, \"y\":0.0, \"z\":0.0 }}");
 	}
 
 	void OnGUI ()

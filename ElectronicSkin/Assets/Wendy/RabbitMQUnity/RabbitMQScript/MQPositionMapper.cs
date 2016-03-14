@@ -105,8 +105,7 @@ public class MQPositionMapper : MonoBehaviour {
 	
 	void LoadJsonPos ( string jsonString )
 	{
-		string sr;
-		Debug.Log( "Json Loaded : " + jsonString );
+//		Debug.Log( "Json Loaded : " + jsonString );
 		// convert pure string to json node
 		JSONNode nodes = JSON.Parse( jsonString );
 		
