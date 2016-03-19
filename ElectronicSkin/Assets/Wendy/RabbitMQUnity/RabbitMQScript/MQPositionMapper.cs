@@ -111,12 +111,10 @@ public class MQPositionMapper : MonoBehaviour {
 		
 		// format :
 		//	{
-		//		"p1x":0,
-		//		"p1y":0,
-		//		"p2x":0,
-		//		"p2y":0,
-		//		...
-		//		...
+		//		"id":"user1", // 使用者 ID, String
+		//		"data":{
+		//				"position":{ "x":0.0, "y":0.0, "z":0.0 } // 數字單位為公尺
+		//			   }
 		//	}
 		
 		
@@ -138,8 +136,8 @@ public class MQPositionMapper : MonoBehaviour {
 			// 攝影機組會傳入 p1x, p1y, p2x, p2y ... 等參數
 			// p1x 表示是 player1 的 x，p2x 則是 player2 的 x，以此類推
 			// 由於攝影機組是從 1 開始編號到 5，所以下面 i+1 表示
-			string xIndexName = "p" + (i+1).ToString() + "x";
-			string yIndexName = "p" + (i+1).ToString() + "y";
+			string xIndexName = "user" + (i+1).ToString() + "x";
+			string yIndexName = "user" + (i+1).ToString() + "y";
 			
 			// 看看有沒有 pix 這筆資料，沒有的話表示這筆 json 內沒有這個 player 的資料
 			// 就繼續檢查下一筆
@@ -349,4 +347,6 @@ public class MQPositionMapper : MonoBehaviour {
 		movePlayers = newMovePlayers;
 		
 	}
+
+
 }

@@ -599,12 +599,6 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EventSystem: {fileID: 0}
-  m_PrevActionTime: 0
-  m_LastMoveVector: {x: 0, y: 0}
-  m_ConsecutiveMoveCount: 0
-  m_LastMousePosition: {x: 0, y: 0}
-  m_MousePosition: {x: 0, y: 0}
   m_HorizontalAxis: 486f72697a6f6e74616c
   m_VerticalAxis: 566572746963616c
   m_SubmitButton: 5375626d6974
@@ -623,13 +617,9 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SystemInputModules: []
-  m_CurrentInputModule: {fileID: 0}
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
-  m_CurrentSelected: {fileID: 0}
-  m_SelectionGuard: 0
 --- !u!4 &1968873441
 Transform:
   m_ObjectHideFlags: 0
@@ -641,4 +631,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
