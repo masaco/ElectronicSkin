@@ -8,20 +8,22 @@ using SimpleJSON;
 public class MQMapperManager : MonoBehaviour {
 
 	public RabbitMQServer rabbitServer;
-	public GameObject skeletonObj;
-	public Transform skeletonRoot; // use for positions
-	public int PlayerIDWise
-	; // 讀取wise的id值
-	private MQMapperItem[] mappers;
+	public GameObject[] skeletonObj;
+	public Transform[] skeletonRoot; // use for positions
+
+	private MQMapperItem[][] mappers;
 
 	// all saved messages
 	private List<string> messages;
 	public int messageBufferedLimit = 5;
 
-
 	void Awake ()
 	{
-		mappers = gameObject.GetComponentsInChildren<MQMapperItem>();
+		for(int i = 0; i < mappers.Length ; i++)
+		{
+			mappers[i] = gameObject.GetComponentsInChildren<MQMapperItem>();
+		}
+			
 	}
 
 	// Use this for initialization
@@ -54,41 +56,51 @@ public class MQMapperManager : MonoBehaviour {
 		JSONNode nodesAll = JSON.Parse( jsonString );
 
 		// 資料格式 "dataSet":[{"id":"1","data":{關節資料}}]
-		JSONNode nodes = nodesAll["dataSet"]; //存dataSet裡面的陣列資料
+		JSONNode nodesDataSet = nodesAll["dataSet"]; //存dataSet裡面的陣列資料
 
 		// if convert failed : not json format
-		if( nodesAll == null || nodes[0]["id"] == null)
+		if( nodesAll == null || nodesDataSet == null)
 		{
 			Debug.Log( "OOps convert fail : not json format" );
 			return;
 		}
 
 		// 讀取wise的id值
-		PlayerIDWise = int.Parse(nodes[0]["id"]) ;  
-		// 資料格式 "dataSet":[{"id":"1","data":{關節資料}}]
-
-		//{"item_bag":[{"name":"apple", "price":20}, {"name":"sword", "price":300}, "test"]}
-		//jsonData["item_bag"][0]["name"] + ":" + jsonData["item_bag"][0]["price"]
+		//PlayerIDWise = int.Parse(nodes[0]["id"]) ;  
+		// 資料格式 "dataSet":[{"id":"user1","data":{關節資料}}]
 
 
 		// search is there data for skeletonNodes
 		for( int i=0; i< mappers.Length; i++ )
 		{
-			string indexName = mappers[i].name;
-
-			if( nodes[ indexName ] != null )
+			for (int j= 0 ; j<mappers[i].Length; j++)
 			{
-				Vector3 newRotation = new Vector3( nodes[ indexName ]["x"].AsFloat, nodes[ indexName ]["y"].AsFloat, nodes[ indexName ]["z"].AsFloat );
-				mappers[i].ApplyJsonRot( newRotation );
+				string indexName = mappers[i][j].name;
+
+				if( nodesDataSet[ indexName ] != null )
+				{
+					Vector3 newRotation = new Vector3( nodesDataSet[i][ indexName ]["x"].AsFloat, 
+													   nodesDataSet[i][ indexName ]["y"].AsFloat, 
+						                               nodesDataSet[i][ indexName ]["z"].AsFloat );
+					mappers[i][j].ApplyJsonRot( newRotation );
+				}
+
 			}
+
 		}
 
 		// check position
-		if( nodes[ "Position" ] != null )
+		if( nodesDataSet[ "Position" ] != null )
 		{
-			string indexName = "Position";
-			Vector3 newPos = new Vector3( nodes[ indexName ]["x"].AsFloat, nodes[ indexName ]["y"].AsFloat, nodes[ indexName ]["z"].AsFloat );
-			skeletonRoot.position = newPos;
+			for (int i =0 ; i <skeletonRoot.Length; i++)
+			{
+				string indexName = "Position";
+				Vector3 newPos = new Vector3( nodesDataSet[i][ indexName ]["x"].AsFloat, 
+					 						  nodesDataSet[i][ indexName ]["y"].AsFloat, 
+											  nodesDataSet[i][ indexName ]["z"].AsFloat );
+				skeletonRoot[i].position = newPos;
+			}
+
 		}
 	}
 
@@ -112,20 +124,34 @@ public class MQMapperManager : MonoBehaviour {
 	{
 		// get scripts from children
 		Component[] comps = transform.GetComponentsInChildren<MQMapperItem>();
-		mappers = new MQMapperItem[ comps.Length ];
+		for (int i = 0; i< mappers.Length ; i++)
+		{
+			mappers[i] = new MQMapperItem[ comps.Length ];
+
+		}
+
 		for( int i=0; i< comps.Length; i++ )
 		{
-			mappers[i] = (MQMapperItem)comps[i];
-			Debug.Log( mappers[i].name );
+			for( int j=0; j < comps.Length; j++)
+			{
+				mappers[i][j] = (MQMapperItem)comps[i];
+				Debug.Log( mappers[i][j].name );
+			}
+
 		}
-		
+
 		// search for objs by name in source
 		for( int i=0; i< mappers.Length; i++ )
 		{
-			Transform tempSource = FindChildNested( skeletonObj.transform, mappers[i].name );
-			
-			if( tempSource != null )
-				mappers[i].monitorTransform = tempSource;
+			for( int j =0 ; j < mappers[i].Length;j++)
+			{
+				Transform tempSource = FindChildNested( skeletonObj[i].transform, mappers[i][j].name );
+
+				if( tempSource != null )
+					mappers[i][j].monitorTransform = tempSource;
+
+			}
+
 		}
 		
 	}
