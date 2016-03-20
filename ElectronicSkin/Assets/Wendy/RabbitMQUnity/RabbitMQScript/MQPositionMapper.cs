@@ -52,7 +52,7 @@ public class MQPositionMapper : MonoBehaviour {
 	
 	
 	// debug options, use for RabbitTestSender
-	public bool showDebugPoints = false;
+//	public bool showDebugPoints = false;
 	public GameObject[] debugPointsPrefabs;
 	
 	void Awake ()
@@ -108,6 +108,8 @@ public class MQPositionMapper : MonoBehaviour {
 //		Debug.Log( "Json Loaded : " + jsonString );
 		// convert pure string to json node
 		JSONNode nodes = JSON.Parse( jsonString );
+		JSONNode datas = nodes["data"];
+		JSONNode position = datas["position"];
 		
 		// format :
 		//	{
@@ -131,27 +133,31 @@ public class MQPositionMapper : MonoBehaviour {
 		//
 		// 然後這支程式其實很笨，他並不知道這筆 json 是哪一個 player 的資料
 		// 所以會從 p1 開啟檢查到 p5，看是哪一個 player 的資料
+		string playerID = nodes["id"];
+
 		for (int i=0; i< movePlayers.Length; i++) {
 			
-			// 攝影機組會傳入 p1x, p1y, p2x, p2y ... 等參數
-			// p1x 表示是 player1 的 x，p2x 則是 player2 的 x，以此類推
-			// 由於攝影機組是從 1 開始編號到 5，所以下面 i+1 表示
-			string xIndexName = "user" + (i+1).ToString() + "x";
-			string yIndexName = "user" + (i+1).ToString() + "y";
-			
+			// 攝影機組會傳入 user1, user2...
+			string IndexName = "user" + (i+1).ToString(); 
+				
 			// 看看有沒有 pix 這筆資料，沒有的話表示這筆 json 內沒有這個 player 的資料
 			// 就繼續檢查下一筆
-			if( nodes[xIndexName] == null || nodes[yIndexName] == null )
+			if( nodes[IndexName] == null )
 				continue;
-			
-			// 暫存攝影機組傳來的 input 資料
-			// 現在 inputX, inputY 的數值是攝影機組傳來的座標
-			float inputX = nodes[xIndexName].AsFloat;
-			float inputY = nodes[yIndexName].AsFloat;
-			
-			
-			// 這是給攝影機組 debug 用的，實際使用時應該把這個關掉
-			if( showDebugPoints ) {
+
+			//檢查現在是user幾
+			if (playerID == IndexName)
+			{
+				// 暫存攝影機組傳來的 input 資料
+				// 現在 inputX, inputY 的數值是攝影機組傳來的座標
+
+
+				float inputX = position["x"].AsFloat;
+				float inputY = position["y"].AsFloat;
+
+
+				// 這是給攝影機組 debug 用的，實際使用時應該把這個關掉
+				/*if( showDebugPoints ) {
 				
 				Debug.Log( "input: (" + inputX + "," + inputY + ")" );
 				Vector2 mappingData = mappingInputPosition( inputX, inputY );
@@ -161,55 +167,56 @@ public class MQPositionMapper : MonoBehaviour {
 				
 				Instantiate( debugPointsPrefabs[i] , new Vector3( posX, 11.0f, posY), Quaternion.identity );
 			}
-			
-			
-			// posHistory 是用來做平滑化使用的
-			// smoothAmount 表示要平滑化的資料筆數
-			//
-			// 假設 smoothAmount = 5
-			// 那就會把攝影組傳來的 近 5 筆資料平均後 套用到 player 身上
-			//
-			// 如果設定成 smoothAmount = 1 就是完全不平滑， 0 的話就不會動了
-			posHistory[i].Add( new Vector2( inputX, inputY ) );
-			
-			// 超出 smoothAmount 的筆數刪掉
-			while( posHistory[i].Count > smoothAmount )
-				posHistory[i].RemoveAt(0);
-			
-			
-			// 這邊把 inputX inputY 清空，因為上面已經存到 posHistory 裡面了
-			inputX = 0.0f;
-			inputY = 0.0f;
-			
-			// 如果有勾 smoothData 就把資料平均
-			if( smoothData )
-			{
-				for( int j=0; j< posHistory[i].Count; j++ )
+			*/
+
+				// posHistory 是用來做平滑化使用的
+				// smoothAmount 表示要平滑化的資料筆數
+				//
+				// 假設 smoothAmount = 5
+				// 那就會把攝影組傳來的 近 5 筆資料平均後 套用到 player 身上
+				//
+				// 如果設定成 smoothAmount = 1 就是完全不平滑， 0 的話就不會動了
+				posHistory[i].Add( new Vector2( inputX, inputY ) );
+
+				// 超出 smoothAmount 的筆數刪掉
+				while( posHistory[i].Count > smoothAmount )
+					posHistory[i].RemoveAt(0);
+
+
+				// 這邊把 inputX inputY 清空，因為上面已經存到 posHistory 裡面了
+				inputX = 0.0f;
+				inputY = 0.0f;
+
+				// 如果有勾 smoothData 就把資料平均
+				if( smoothData )
 				{
-					inputX += posHistory[i][j].x;
-					inputY += posHistory[i][j].y;
+					for( int j=0; j< posHistory[i].Count; j++ )
+					{
+						inputX += posHistory[i][j].x;
+						inputY += posHistory[i][j].y;
+					}
+
+					inputX /= smoothAmount;
+					inputY /= smoothAmount;
 				}
+				else
+					// 沒勾 smoothData 就直接套用最後一筆
+				{
+					int lastIndex = posHistory[i].Count-1;
+					inputX = posHistory[i][ lastIndex ].x;
+					inputY = posHistory[i][ lastIndex ].y;
+				}
+
+				// 把視訊組傳來的座標轉換成 Unity 的座標
+				Vector2 remappingData = mappingInputPosition( inputX, inputY );
+				Vector3 newPos = movePlayers[i].position;
+				newPos.x = remappingData.x;
+				newPos.z = remappingData.y;
+
+				// 套用新的座標，呼叫平滑移動 function，讓他不會瞬間移動
+				StartCoroutine( MoveSmoothly( movePlayers[i], newPos ) );
 				
-				inputX /= smoothAmount;
-				inputY /= smoothAmount;
-			}
-			else
-				// 沒勾 smoothData 就直接套用最後一筆
-			{
-				int lastIndex = posHistory[i].Count-1;
-				inputX = posHistory[i][ lastIndex ].x;
-				inputY = posHistory[i][ lastIndex ].y;
-			}
-			
-			// 把視訊組傳來的座標轉換成 Unity 的座標
-			Vector2 remappingData = mappingInputPosition( inputX, inputY );
-			Vector3 newPos = movePlayers[i].position;
-			newPos.x = remappingData.x;
-			newPos.z = remappingData.y;
-			
-			// 套用新的座標，呼叫平滑移動 function，讓他不會瞬間移動
-			StartCoroutine( MoveSmoothly( movePlayers[i], newPos ) );
-			
+			}	
 		}
 	}
 	

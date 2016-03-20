@@ -408,11 +408,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rabbitServer: {fileID: 1098041985}
-  userPlayer: {fileID: 0}
+  userPlayer: {fileID: 1082303833}
   playerIndex: 1
   isPlayerIndexSettingUp: 0
   movePlayers:
-  - {fileID: 1082303833}
   - {fileID: 1603819852}
   smoothData: 1
   smoothAmount: 10
@@ -421,7 +420,6 @@ MonoBehaviour:
   sceneXrange: {x: 0, y: 4}
   sceneYrange: {x: 0, y: 4}
   messageBufferedLimit: 5
-  showDebugPoints: 0
   debugPointsPrefabs: []
 --- !u!1 &1151082610
 GameObject:
@@ -795,7 +793,7 @@ MonoBehaviour:
   - {fileID: 1736019486}
   - {fileID: 1953181923}
   - {fileID: 132124188}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 1981831615}
   m_Size: {x: 10, y: 10, z: 10}
   m_SpotNear: 0.05
   m_SpotFar: 1
