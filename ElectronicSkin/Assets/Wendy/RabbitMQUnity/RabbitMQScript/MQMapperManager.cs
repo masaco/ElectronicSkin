@@ -13,12 +13,15 @@ public class MQMapperManager : MonoBehaviour {
 
 	private MQMapperItem[][] mappers;
 
+
 	// all saved messages
 	private List<string> messages;
 	public int messageBufferedLimit = 5;
 
 	void Awake ()
 	{
+//		mappers = new MQMapperItem[skeletonObj.Length][];
+		mappers = new MQMapperItem[2][];
 		for(int i = 0; i < mappers.Length ; i++)
 		{
 			mappers[i] = gameObject.GetComponentsInChildren<MQMapperItem>();
@@ -28,6 +31,7 @@ public class MQMapperManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 
 		messages = new List<string>();
 
@@ -40,6 +44,7 @@ public class MQMapperManager : MonoBehaviour {
 	void Update () {
 
 		SaveNewMessages ();
+//		Debug.Log("messages :"+ messages);
 
 		// apply server data
 		if( messages.Count > 0 )
@@ -77,7 +82,7 @@ public class MQMapperManager : MonoBehaviour {
 			{
 				string indexName = mappers[i][j].name;
 
-				if( nodesDataSet[ indexName ] != null )
+				if( nodesDataSet[i]["data"][ indexName ] != null )
 				{
 					Vector3 newRotation = new Vector3( nodesDataSet[i]["data"][ indexName ]["x"].AsFloat, 
 												    	nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
@@ -90,7 +95,7 @@ public class MQMapperManager : MonoBehaviour {
 		}
 
 		// check position
-		if( nodesDataSet[ "Position" ] != null )
+		if( nodesDataSet[0]["data"][ "Position" ] != null )
 		{
 			for (int i =0 ; i <skeletonRoot.Length; i++)
 			{
@@ -117,6 +122,7 @@ public class MQMapperManager : MonoBehaviour {
 			// if meet limit, dont save
 			if( messages.Count < messageBufferedLimit )
 				messages.Add( newMessages[i] );
+			Debug.Log("mocap :" + messages);
 		}
 	}
 
@@ -130,11 +136,11 @@ public class MQMapperManager : MonoBehaviour {
 
 		}
 
-		for( int i=0; i< comps.Length; i++ )
+		for( int i=0; i< 1; i++ )
 		{
 			for( int j=0; j < comps.Length; j++)
 			{
-				mappers[i][j] = (MQMapperItem)comps[i];
+				mappers[i][j] = (MQMapperItem)comps[j];
 				Debug.Log( mappers[i][j].name );
 			}
 

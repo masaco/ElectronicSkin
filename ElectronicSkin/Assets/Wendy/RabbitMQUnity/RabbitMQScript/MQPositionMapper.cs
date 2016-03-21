@@ -110,6 +110,8 @@ public class MQPositionMapper : MonoBehaviour {
 		JSONNode nodes = JSON.Parse( jsonString );
 		JSONNode datas = nodes["data"];
 		JSONNode position = datas["position"];
+
+//		Debug.Log("position : "+ position.ToString());
 		
 		// format :
 		//	{
@@ -119,10 +121,10 @@ public class MQPositionMapper : MonoBehaviour {
 		//			   }
 		//	}
 		
-		
+	
 		// 檢查是否傳入訊息為 JSON 格式
 		// 如果 nodes == null 表示並非 json 格式
-		if( nodes == null )
+		if( nodes == null || datas == null || datas == null)
 		{
 			Debug.Log( "OOps convert fail : not json format" );
 			return;
@@ -134,28 +136,32 @@ public class MQPositionMapper : MonoBehaviour {
 		// 然後這支程式其實很笨，他並不知道這筆 json 是哪一個 player 的資料
 		// 所以會從 p1 開啟檢查到 p5，看是哪一個 player 的資料
 		string playerID = nodes["id"];
-
-		for (int i=0; i< movePlayers.Length; i++) {
+//		Debug.Log("playerID = " +playerID );
+//		for (int i=0; i< movePlayers.Length; i++) {
+		for (int i=0; i< 1; i++) {
 			
 			// 攝影機組會傳入 user1, user2...
-			string IndexName = "user" + (i+1).ToString(); 
-				
+//			string IndexName = "user" + (i+1).ToString(); 
+//			string IndexName = (i+1).ToString(); 
+			string IndexName = "5";
+		
+//			Debug.Log("playerID" + playerID);	
 			// 看看有沒有 pix 這筆資料，沒有的話表示這筆 json 內沒有這個 player 的資料
 			// 就繼續檢查下一筆
-			if( nodes[IndexName] == null )
-				continue;
-
+//			if( nodes[IndexName] == null )
+//				continue;
+			
 			//檢查現在是user幾
-			if (playerID == IndexName)
+			if (playerID == "5")
 			{
 				// 暫存攝影機組傳來的 input 資料
 				// 現在 inputX, inputY 的數值是攝影機組傳來的座標
-
+//				Debug.Log("position : "+ position.ToString());
 
 				float inputX = position["x"].AsFloat;
 				float inputY = position["y"].AsFloat;
 
-
+//				Debug.Log("input : " + inputX +"," + inputY);
 				// 這是給攝影機組 debug 用的，實際使用時應該把這個關掉
 				/*if( showDebugPoints ) {
 				
@@ -296,7 +302,7 @@ public class MQPositionMapper : MonoBehaviour {
 //			if( messages.Count < messageBufferedLimit )
 //			{
 				messages.Add( newMessages[i] );
-				Debug.Log( newMessages[i] );
+//				Debug.Log( newMessages[i] );
 //			}
 		}
 	}
