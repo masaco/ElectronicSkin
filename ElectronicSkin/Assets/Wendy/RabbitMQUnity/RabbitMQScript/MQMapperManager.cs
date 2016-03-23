@@ -6,6 +6,12 @@ using NccuWise;
 using SimpleJSON;
 
 public class MQMapperManager : MonoBehaviour {
+//	public GameObject[] ModelObjAll;
+//	public Transform[] HipsAll;
+	public int selfID ;
+//	public int selfColorID = 2;
+	private int otherID;
+//	private int otherColorID = 2;
 
 	public RabbitMQServer rabbitServer;
 	public GameObject[] skeletonObj;
@@ -22,6 +28,8 @@ public class MQMapperManager : MonoBehaviour {
 	{
 //		mappers = new MQMapperItem[skeletonObj.Length][];
 		mappers = new MQMapperItem[2][];
+
+
 		for(int i = 0; i < mappers.Length ; i++)
 		{
 			mappers[i] = gameObject.GetComponentsInChildren<MQMapperItem>();
@@ -34,6 +42,9 @@ public class MQMapperManager : MonoBehaviour {
 
 
 		messages = new List<string>();
+
+		//如果自己是1 對方就是2
+		otherID = (selfID == 1)?2:1;
 
 		// find transforms in skeletonObj
 		ResetSource ();
@@ -80,6 +91,12 @@ public class MQMapperManager : MonoBehaviour {
 		{
 			for (int j= 0 ; j<mappers[i].Length; j++)
 			{
+				//判斷陣列[0]是否是user1 陣列[1]是否是user2
+				string playerID = nodesDataSet["id"];
+				string userI = "user" + (i+1).ToString();
+				if (!playerID.Equals(userI)) break;
+
+				//抓資料
 				string indexName = mappers[i][j].name;
 
 				if( nodesDataSet[i]["data"][ indexName ] != null )
@@ -122,7 +139,7 @@ public class MQMapperManager : MonoBehaviour {
 			// if meet limit, dont save
 			if( messages.Count < messageBufferedLimit )
 				messages.Add( newMessages[i] );
-			Debug.Log("mocap :" + messages);
+//			Debug.Log("mocap :" + messages);
 		}
 	}
 
@@ -136,7 +153,7 @@ public class MQMapperManager : MonoBehaviour {
 
 		}
 
-		for( int i=0; i< 1; i++ )
+		for( int i=0; i< 2; i++ )
 		{
 			for( int j=0; j < comps.Length; j++)
 			{

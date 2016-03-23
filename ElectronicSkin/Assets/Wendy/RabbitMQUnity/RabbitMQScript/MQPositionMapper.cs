@@ -142,8 +142,8 @@ public class MQPositionMapper : MonoBehaviour {
 			
 			// 攝影機組會傳入 user1, user2...
 //			string IndexName = "user" + (i+1).ToString(); 
-//			string IndexName = (i+1).ToString(); 
-			string IndexName = "5";
+			string IndexName = (i+1).ToString(); 
+//			string IndexName = "5";
 		
 //			Debug.Log("playerID" + playerID);	
 			// 看看有沒有 pix 這筆資料，沒有的話表示這筆 json 內沒有這個 player 的資料
@@ -152,7 +152,7 @@ public class MQPositionMapper : MonoBehaviour {
 //				continue;
 			
 			//檢查現在是user幾
-			if (playerID == "5")
+			if (playerID.Equals(IndexName))
 			{
 				// 暫存攝影機組傳來的 input 資料
 				// 現在 inputX, inputY 的數值是攝影機組傳來的座標
