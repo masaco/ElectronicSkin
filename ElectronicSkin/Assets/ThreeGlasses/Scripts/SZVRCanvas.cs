@@ -5,18 +5,6 @@ using System;
 
 public class SZVRCanvas : MonoBehaviour 
 {
-    public struct LatencyData
-    {
-        // The time it took to render both eyes in seconds.
-        public float render;
-
-        // The time it took to perform TimeWarp in seconds.
-        public float timeWarp;
-
-        // The time between the end of TimeWarp and scan-out in seconds.
-        public float postPresent;
-    }
-
 	private SZVRDevice device;
 
 	private Mesh leftMesh = null;
@@ -41,6 +29,8 @@ public class SZVRCanvas : MonoBehaviour
 
 	void Start () 
 	{
+        Screen.fullScreen = true;
+
 		Camera camera = gameObject.GetComponent<Camera>();
 
 		if(camera != null)
@@ -74,7 +64,6 @@ public class SZVRCanvas : MonoBehaviour
 
 	void Update ()
 	{
-        GL.Clear(true, true, Color.black);
 		if(create)
 		{
 			if(useCameraTexture)
@@ -95,16 +84,12 @@ public class SZVRCanvas : MonoBehaviour
 	{
 		RenderTexture.active = dest;
 
+		GL.Clear (false, true, Color.black);
 		DistortEye (false, src);
 		DistortEye (true, src);
 
 		GL.IssuePluginEvent(1);
 	}
-
-    void LateUpdate()
-    {
-        GL.Clear(false, true, Color.black);
-    }
 
 	void DistortEye (bool rightEye, RenderTexture src)
 	{
@@ -136,7 +121,7 @@ public class SZVRCanvas : MonoBehaviour
 	{
 		if(useCameraTexture)
 		{
-			cameraTexture = new RenderTexture(3840,2160,24,RenderTextureFormat.ARGB32);
+			cameraTexture = new RenderTexture(2560,1440,24,RenderTextureFormat.ARGB32);
 			cameraTexture.antiAliasing = 8;
 			cameraTexture.Create();
 		}

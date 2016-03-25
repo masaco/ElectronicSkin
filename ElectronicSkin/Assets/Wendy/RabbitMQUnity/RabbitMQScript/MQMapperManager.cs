@@ -16,6 +16,7 @@ public class MQMapperManager : MonoBehaviour {
 	public RabbitMQServer rabbitServer;
 	public GameObject[] skeletonObj;
 	public Transform[] skeletonRoot; // use for positions
+	public GameObject[] root;
 
 	private MQMapperItem[][] mappers;
 
@@ -29,18 +30,15 @@ public class MQMapperManager : MonoBehaviour {
 //		mappers = new MQMapperItem[skeletonObj.Length][];
 		mappers = new MQMapperItem[2][];
 
-
 		for(int i = 0; i < mappers.Length ; i++)
 		{
-			mappers[i] = gameObject.GetComponentsInChildren<MQMapperItem>();
+			mappers[i] = root[i].GetComponentsInChildren<MQMapperItem>();
 		}
 			
 	}
 
 	// Use this for initialization
 	void Start () {
-
-
 		messages = new List<string>();
 
 		//如果自己是1 對方就是2
@@ -63,6 +61,7 @@ public class MQMapperManager : MonoBehaviour {
 			string msg = messages[0];
 			messages.RemoveAt(0);
 			LoadJsonRots( msg );
+//			Debug.Log (msg.ToString());
 		}
 	}
 	
@@ -91,19 +90,13 @@ public class MQMapperManager : MonoBehaviour {
 		{
 			for (int j= 0 ; j<mappers[i].Length; j++)
 			{
-				//判斷陣列[0]是否是user1 陣列[1]是否是user2
-				string playerID = nodesDataSet["id"];
-				string userI = "user" + (i+1).ToString();
-				if (!playerID.Equals(userI)) break;
-
-				//抓資料
 				string indexName = mappers[i][j].name;
 
 				if( nodesDataSet[i]["data"][ indexName ] != null )
 				{
 					Vector3 newRotation = new Vector3( nodesDataSet[i]["data"][ indexName ]["x"].AsFloat, 
-												    	nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
-														nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
+						nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
+						nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
 					mappers[i][j].ApplyJsonRot( newRotation );
 				}
 
@@ -118,18 +111,19 @@ public class MQMapperManager : MonoBehaviour {
 			{
 				string indexName = "Position";
 				Vector3 newPos = new Vector3( nodesDataSet[i]["data"][ indexName ]["x"].AsFloat, 
-												nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
-												nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
+					nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
+					nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
 				skeletonRoot[i].position = newPos;
 			}
 
 		}
 	}
 
+
 	void SaveNewMessages ()
 	{
 		List<string> newMessages = rabbitServer.GetNewMessages();
-		
+
 		// if server haven't started yet
 		if( newMessages == null )
 			return;
@@ -137,6 +131,7 @@ public class MQMapperManager : MonoBehaviour {
 		for( int i=0; i< newMessages.Count; i++ )
 		{
 			// if meet limit, dont save
+
 			if( messages.Count < messageBufferedLimit )
 				messages.Add( newMessages[i] );
 //			Debug.Log("mocap :" + messages);
@@ -146,26 +141,29 @@ public class MQMapperManager : MonoBehaviour {
 	void ResetSource ()
 	{
 		// get scripts from children
-		Component[] comps = transform.GetComponentsInChildren<MQMapperItem>();
+		Component[][] comps = new Component[mappers.Length][];
+			
 		for (int i = 0; i< mappers.Length ; i++)
 		{
-			mappers[i] = new MQMapperItem[ comps.Length ];
+			comps[i] = root[i].GetComponentsInChildren<MQMapperItem>();
 
 		}
 
-		for( int i=0; i< 2; i++ )
+		for( int i=0; i< 1; i++ )
 		{
-			for( int j=0; j < comps.Length; j++)
+			for( int j=0; j < comps[i].Length; j++)
 			{
-				mappers[i][j] = (MQMapperItem)comps[j];
-				Debug.Log( mappers[i][j].name );
+				mappers[i][j] = (MQMapperItem)comps[i][j];
+				//Debug.Log( mappers[i][j].name );
 			}
 
 		}
 
+
 		// search for objs by name in source
 		for( int i=0; i< mappers.Length; i++ )
 		{
+			//Debug.Log ("mappers[i].Length:"+mappers[i].Length);
 			for( int j =0 ; j < mappers[i].Length;j++)
 			{
 				Transform tempSource = FindChildNested( skeletonObj[i].transform, mappers[i][j].name );
@@ -176,7 +174,7 @@ public class MQMapperManager : MonoBehaviour {
 			}
 
 		}
-		
+
 	}
 
 

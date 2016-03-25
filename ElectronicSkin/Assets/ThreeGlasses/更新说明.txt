@@ -1,14 +1,10 @@
-ThreeGlasses & Unity SDK V0.9.2
-
-修改了用右键在眼镜中播放游戏的问题。
-
 ThreeGlasses & Unity SDK V0.9.1
 
 更新了说明文档。
 
 ThreeGlasses & Unity SDK V0.9.0
 
-修改了UseCameraTexture有时出现黑屏的问题;
+修改了UseCameraTexture有时出现黑屏的问题
 去掉了添加DistortionMesh.shader的步骤，现在发布不会再出现黑屏；
 现在可以设置两只眼睛上的RenderingPath，但是将选项设置成Deferred就不能使用UseCameraTexture，这个问题在后期版本会得到解决；
 降低了CameraTexture的最终输出分辨率，现在的分辨率是2560*1440；

@@ -47,10 +47,10 @@ public class ColliderManager : MonoBehaviour {
 		string actionData;
 		messageToShow = "";
 
-		actionData = "\"id\":\"user" + selfID + "\",\"data\":{\" "+ touchPart[1] +" \":{\"action\":{\"vibrate\":{\"duration\":1000,\"interval\":0,\"times\":1}}}}";
+		actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":0,\"times\":1}}}}}]";
 
 //		Debug.Log("actionData" + actionData);
-		sender.SendMessageToServer(actionData);
+//		sender.SendMessageToServer(actionData);
 		//sender.SendMessageToServer("\"id\":\"\",\"data\":{\"rightHand\":{ \"x\":0,\"y\":0,\"z\":0 },\"leftHand\":{ \"x\":0, \"y\":0, \"z\":0 },\"postion\":{\"x\":0.0, \"y\":0.0, \"z\":0.0 }}");
 	}
 
@@ -74,7 +74,8 @@ public class ColliderManager : MonoBehaviour {
 			touchPart = gameObject.name.Split('_');
 
 			touchPart[1] = toLowerFirstChar(touchPart[1]);
-//			Debug.Log(touchPart[1]);
+			touchPart[1].Substring (1);
+//			Debug.Log("touchPart:"+touchPart[1]);
 
 		}
 	}

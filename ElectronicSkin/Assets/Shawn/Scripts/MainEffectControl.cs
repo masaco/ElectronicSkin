@@ -81,20 +81,20 @@ public class MainEffectControl : MonoBehaviour {
 				switch (peCtrl.name)
 				{
 					case "Head": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Head).transform; break;
-					case "Chest": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Chest).transform; break;
-					case "Spine": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Spine).transform; break;
+					case "Chest": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Chest).transform; peCtrl.name = "spine3"; break;
+					case "Spine": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Spine).transform; peCtrl.name = "spine2"; break;
 					case "Hips": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Hips).transform; break;
-					case "RightUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperArm).transform; break;
-					case "RightLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerArm).transform; break;
+					case "RightUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperArm).transform; 	peCtrl.name = "rightForeArm"; break;
+					case "RightLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerArm).transform; peCtrl.name = "rightArm"; break;
 					case "RightHand": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightHand).transform; break;
-					case "LeftUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform; break;
-					case "LeftLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; break;
+					case "LeftUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform; peCtrl.name = "leftForeArm"; break;
+					case "LeftLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; peCtrl.name = "leftArm"; break;
 					case "LeftHand": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftHand).transform; break;
-					case "RightUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).transform; break;
-					case "RightLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerLeg).transform; break;
+					case "RightUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).transform; peCtrl.name = "rightUpLeg"; break;
+					case "RightLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerLeg).transform; peCtrl.name = "rightLeg";break;
 					case "RightFoot": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightFoot).transform; break;
-					case "LeftUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperLeg).transform; break;
-					case "LeftLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerLeg).transform; break;
+					case "LeftUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperLeg).transform; peCtrl.name = "leftUpLeg";break;
+					case "LeftLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerLeg).transform; peCtrl.name = "leftLeg";break;
 					case "LeftFoot": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftFoot).transform; break;
 				}
 			}

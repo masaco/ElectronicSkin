@@ -10,7 +10,6 @@ Copyright   :   Copyright 2015 ThreeGlasses VR, Inc. All Rights reserved.
 ************************************************************************************/
 using UnityEngine;
 using System.Runtime.InteropServices;
-using System;
 
 namespace SZVR_SDK
 {
@@ -57,15 +56,6 @@ namespace SZVR_SDK
 		[DllImport (vrLib)]
 		private static extern bool SZVR_SaveRunAs3Glasses(string szCmdLine);
 
-        [DllImport("user32.dll")]
-        static extern IntPtr SetWindowLong(IntPtr hwnd, int _nIndex, int dwNewLong);
-
-        [DllImport("user32.dll")]
-        static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-
-        [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();
-
 		public static bool isInitFinish = false;
 		public static float ipd = 0.064f;
 
@@ -75,45 +65,6 @@ namespace SZVR_SDK
 
 		private static MessageList msgList = new MessageList(0,0,0);
 
-        //private const uint SWP_NOMOVE = 0x2;
-        //private const uint SWP_NOSIZE = 1;
-        //private const uint SWP_NOZORDER = 0x4;
-        //private const uint SWP_HIDEWINDOW = 0x0080;
-        private const uint SWP_SHOWWINDOW = 0x0040;
-        private const int GWL_STYLE = -16;
-        private const int WS_BORDER = 1;
-
-        public static void SetPositionAndReslution()
-        {
-            string[] args = Environment.GetCommandLineArgs();
-
-           // VRUIPopPage.PopPromptPage(args[0] + "" + args[1] + "" + args[2] + "" + args[3] + "" + args[4] + "" + args[5]);
-            
-            int x = 0;
-            int y = 0;
-            int w = 0;
-            int h = 0;
-
-            if (args.Length == 6)
-            {
-                if (int.TryParse(args[2], out x) &&
-                    int.TryParse(args[3], out y) &&
-                    int.TryParse(args[4], out w) &&
-                    int.TryParse(args[5], out h))
-                {
-                    Screen.SetResolution(w, h, false);
-                    SetWindowLong(GetForegroundWindow(), GWL_STYLE, WS_BORDER);
-                    bool result = SetWindowPos(GetForegroundWindow(), 0, x, y, w, h, SWP_SHOWWINDOW);
-                }
-                else
-                {
-                    Application.Quit();
-                }
-            }else
-            {
-                Application.Quit();
-            }
-        }
 
 		/// <summary>
 		/// Device Initialization.
@@ -121,12 +72,8 @@ namespace SZVR_SDK
 		public static void Initialize ()
 		{
 			isInitFinish = SZVR_Initialize();
-
-            if (isInitFinish)
-            {
-                GetIPD();
-                //SetPositionAndReslution();
-            }
+			
+			if(isInitFinish) GetIPD();
 		}
 
 		/// <summary>

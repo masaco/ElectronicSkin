@@ -13,35 +13,18 @@ using System.Runtime.InteropServices;
 
 namespace SZVR_SDK
 {
-	//[StructLayout(LayoutKind.Sequential)]
-    //public struct DistMeshVert
-    //{
-    //    public float screenPosNDC_x;
-    //    public float screenPosNDC_y;
-    //    public float timewarpLerp;
-    //    public float shade;
-    //    public float uv_u;
-    //    public float uv_v;
-    //    public float uv1_u;
-    //    public float uv1_v;
-    //};
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct DistMeshVert
-    {
-        public float screenPosNDC_x;
-        public float screenPosNDC_y;
-        public float timewarpLerp;
-        public float shade;
-        public float uv_u;
-        public float uv_v;
-        public float uvR_u;
-        public float uvR_v;
-        public float uvG_u;
-        public float uvG_v;
-        public float uvB_u;
-        public float uvB_v;
-    };
+	[StructLayout(LayoutKind.Sequential)]
+	public struct DistMeshVert
+	{
+		public float screenPosNDC_x;
+		public float screenPosNDC_y;
+		public float timewarpLerp;
+		public float shade;
+		public float uv_u;
+		public float uv_v;
+		public float uv1_u;
+		public float uv1_v;
+	};
 	
 	[StructLayout(LayoutKind.Sequential)]
 	public struct DistScaleOffsetUV
@@ -88,47 +71,29 @@ namespace SZVR_SDK
 			SZVR_CopyDistortionMesh(meshVerts, triIndices, ref scaleOffset, rightEye, flipY);
 
 			Vector3[] positions = new Vector3[numVerts];
-            //Vector2[] uv = new Vector2[numVerts];
-            //Vector2[] uv1 = new Vector2[numVerts];
-            Vector2[] uv   = new Vector2[numVerts];
-            Vector2[] uvR  = new Vector2[numVerts];
-            Vector4[] uvGB = new Vector4[numVerts];
+			Vector2[] uv = new Vector2[numVerts];
+			Vector2[] uv1 = new Vector2[numVerts];
 
 			for(int i = 0; i < numVerts; i++)
 			{
 				positions[i].x = meshVerts[i].screenPosNDC_x;
 				positions[i].y = meshVerts[i].screenPosNDC_y;
 				positions[i].z = meshVerts[i].shade;
-// 				uv[i].x        = meshVerts[i].uv_u;
-// 				uv[i].y        = meshVerts[i].uv_v;
-// 				uv1[i].x       = meshVerts[i].uv1_u;
-// 				uv1[i].y       = meshVerts[i].uv1_v;
-                uv[i].x        = meshVerts[i].uv_u;
-                uv[i].y        = meshVerts[i].uv_v;
-                uvR[i].x       = meshVerts[i].uvR_u;
-                uvR[i].y       = meshVerts[i].uvR_v;
-                uvGB[i].x      = meshVerts[i].uvG_u;
-                uvGB[i].y      = meshVerts[i].uvG_v;
-                uvGB[i].z      = meshVerts[i].uvB_u;
-                uvGB[i].w      = meshVerts[i].uvB_v;
+				uv[i].x        = meshVerts[i].uv_u;
+				uv[i].y        = meshVerts[i].uv_v;
+				uv1[i].x       = meshVerts[i].uv1_u;
+				uv1[i].y       = meshVerts[i].uv1_v;
 			}
 
 			mesh.vertices  = positions;
-// 			mesh.uv        = uv;
-// #if UNITY_5
-// 			mesh.uv2       = uv1;
-// #elif UNITY_5_0_0
-// 			mesh.uv1       = uv1;
-// #else
-// 			mesh.uv1       = uv1;
-// #endif
-            mesh.uv        = uv;
+			mesh.uv        = uv;
 #if UNITY_5
-            mesh.uv2       = uvR;
-#elif UNITY_4
-            mesh.uv1       = uvR;
+			mesh.uv2       = uv1;
+#elif UNITY_5_0_0
+			mesh.uv1       = uv1;
+#else
+			mesh.uv1       = uv1;
 #endif
-            mesh.tangents   = uvGB;
 			mesh.triangles = triIndices;
 			
 			return mesh;

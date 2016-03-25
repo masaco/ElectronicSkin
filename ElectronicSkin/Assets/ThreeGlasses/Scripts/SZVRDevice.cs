@@ -32,16 +32,12 @@ public class SZVRDevice : MonoBehaviour
     private float updateInterval = 0.5f;
     private float accum = 0.0f;
     private float frames = 0;
-    private float timeleft;
-
-    void Awake()
-    {
-        if (!DeviceInterface.isInitFinish)
-            DeviceInterface.Initialize();
-    }
+    private float timeleft;   
 
 	void Start ()
 	{
+		if(!DeviceInterface.isInitFinish)
+			DeviceInterface.Initialize();
 		DeviceInterface.ResetOrientation();
 
 		canvas = gameObject.GetComponent<SZVRCanvas>();
