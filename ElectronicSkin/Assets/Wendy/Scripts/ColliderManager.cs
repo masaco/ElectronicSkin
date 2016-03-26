@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SimpleJSON;
+using System.Threading;
 
 public class ColliderManager : MonoBehaviour {
-	
+
 	public GameObject roadIDObj;
 	private string[] touchPart;
 	private string selfID ;
 	public RabbitMQSenderServer sender;
-	private string messageToShow;
 
 	// Use this for initialization
 	void Start () {
@@ -45,9 +45,11 @@ public class ColliderManager : MonoBehaviour {
 
 //		JSONClass actionData = new JSONClass();
 		string actionData;
-		messageToShow = "";
 
 		actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":0,\"times\":1}}}}}]";
+		sender.SendMessageToServer(actionData);
+		//暫停50ms
+		Thread.Sleep(50);
 
 //		Debug.Log("actionData" + actionData);
 //		sender.SendMessageToServer(actionData);
@@ -67,14 +69,12 @@ public class ColliderManager : MonoBehaviour {
 
 	void OnTriggerEnter(Collider target)
 	{
-		string targetName = target.name;
 		if (target.tag == "CollisionBody")
 		{
 //			Debug.Log("touch objName = " + target.name);
 			touchPart = gameObject.name.Split('_');
 
 			touchPart[1] = toLowerFirstChar(touchPart[1]);
-			touchPart[1].Substring (1);
 //			Debug.Log("touchPart:"+touchPart[1]);
 
 		}

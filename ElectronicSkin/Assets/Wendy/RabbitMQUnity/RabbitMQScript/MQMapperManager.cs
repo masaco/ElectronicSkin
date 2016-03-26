@@ -95,8 +95,8 @@ public class MQMapperManager : MonoBehaviour {
 				if( nodesDataSet[i]["data"][ indexName ] != null )
 				{
 					Vector3 newRotation = new Vector3( nodesDataSet[i]["data"][ indexName ]["x"].AsFloat, 
-						nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
-						nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
+														nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
+														nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
 					mappers[i][j].ApplyJsonRot( newRotation );
 				}
 
@@ -105,9 +105,11 @@ public class MQMapperManager : MonoBehaviour {
 		}
 
 		// check position
-		if( nodesDataSet[0]["data"][ "Position" ] != null )
+
+
+		for (int i =0 ; i <skeletonRoot.Length; i++)
 		{
-			for (int i =0 ; i <skeletonRoot.Length; i++)
+			if( nodesDataSet[i]["data"][ "Position" ] != null)
 			{
 				string indexName = "Position";
 				Vector3 newPos = new Vector3( nodesDataSet[i]["data"][ indexName ]["x"].AsFloat, 
@@ -115,8 +117,9 @@ public class MQMapperManager : MonoBehaviour {
 					nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
 				skeletonRoot[i].position = newPos;
 			}
-
 		}
+
+		
 	}
 
 
