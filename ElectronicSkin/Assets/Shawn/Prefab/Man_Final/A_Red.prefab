@@ -2554,6 +2554,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainColor: 0
+  ManMeshs:
+  - {fileID: 4300000, guid: ab6e7d1bafc9d6f48aa6a71dd1d17fb6, type: 3}
+  - {fileID: 4300000, guid: b87cfb7d47170c84b8b218c27eb9ab01, type: 3}
+  - {fileID: 4300000, guid: 5a4feda876141614f8f825ce10c71201, type: 3}
+  - {fileID: 4300000, guid: e89bcd16ef7dafd449594d81f59f56ff, type: 3}
+  - {fileID: 4300000, guid: 2986502177d50214f8b8c80edbdba67b, type: 3}
+  - {fileID: 4300000, guid: a8cbac29e04cede41afda7ed508871a7, type: 3}
+  - {fileID: 4300000, guid: 4948b5b8193d2e64e9953b4c13c0c02d, type: 3}
+  ManMaterials:
+  - {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+  - {fileID: 2100000, guid: 8707e80ee8d66a3429786b5b2a22941f, type: 2}
+  - {fileID: 2100000, guid: 5c1cd17651b5df84f882fc100caae3bc, type: 2}
+  - {fileID: 2100000, guid: 10df995eddedd784db8b374b59f39b4b, type: 2}
+  - {fileID: 2100000, guid: 12d423510c5816a4f8a72c8da37aa714, type: 2}
+  - {fileID: 2100000, guid: 1fe40b148a55ac8409e12ae7298d5ac4, type: 2}
+  - {fileID: 2100000, guid: abd2eb6b41085b34ba253cee3de7dc2e, type: 2}
   Character: {fileID: 196290}
   BodyMeshType: 0
   BodyMesh: {fileID: 0}
@@ -2566,6 +2582,23 @@ MonoBehaviour:
   FillRate: 0.1
   BlurRate: 0.012
   isPlayer: 1
+  SFXCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0.4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 2.997025
+      value: 1.1887857
+      inSlope: 0.8336311
+      outSlope: 0.8336311
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  SFXClip: {fileID: 8300000, guid: 97e53f4b2133a034da5209e40ff5e892, type: 3}
 --- !u!114 &11464432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26566,7 +26599,99 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SFXCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SFXCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SFXClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 97e53f4b2133a034da5209e40ff5e892, type: 3}
+    - target: {fileID: 0}
+      propertyPath: SFXCurve.m_Curve.Array.data[1].value
+      value: 1.1887857
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SFXCurve.m_Curve.Array.data[1].time
+      value: 2.997025
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SFXCurve.m_Curve.Array.data[1].inSlope
+      value: 0.8336311
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SFXCurve.m_Curve.Array.data[1].outSlope
+      value: 0.8336311
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4300000, guid: ab6e7d1bafc9d6f48aa6a71dd1d17fb6, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4300000, guid: b87cfb7d47170c84b8b218c27eb9ab01, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4300000, guid: 5a4feda876141614f8f825ce10c71201, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4300000, guid: e89bcd16ef7dafd449594d81f59f56ff, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4300000, guid: 2986502177d50214f8b8c80edbdba67b, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4300000, guid: a8cbac29e04cede41afda7ed508871a7, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMeshs.Array.data[6]
+      value: 
+      objectReference: {fileID: 4300000, guid: 4948b5b8193d2e64e9953b4c13c0c02d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ManMaterials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195010}

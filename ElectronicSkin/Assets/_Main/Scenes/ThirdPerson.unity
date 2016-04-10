@@ -46,8 +46,8 @@ LightmapSettings:
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
-    m_IndirectOutputScale: 1
-    m_AlbedoBoost: 1
+    m_IndirectOutputScale: 1.14
+    m_AlbedoBoost: 2.3
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 0
@@ -257,11 +257,6 @@ MonoBehaviour:
   monitorTransform: {fileID: 0}
   AxisAdjust: {x: 0, y: 0, z: 0}
   ModelAdjust: {x: 0, y: 0, z: 0}
---- !u!20 &132124188 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 2094862, guid: 1a54c8ddebed7e942bdce3171a52ba78,
-    type: 2}
-  m_PrefabInternal: {fileID: 779684288}
 --- !u!1 &147743777
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.8
+  serverIp: 192.168.1.2
   topicName: wise.mocap.pose
 --- !u!114 &749677945
 MonoBehaviour:
@@ -1261,14 +1256,6 @@ Prefab:
       propertyPath: Colors.Array.data[3].a
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11463676, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
-      propertyPath: isPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463676, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
-      propertyPath: MainColor
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11456124, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
     - {fileID: 11433520, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
@@ -1288,17 +1275,6 @@ Prefab:
     - {fileID: 11434178, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &779684289 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 102884, guid: 1a54c8ddebed7e942bdce3171a52ba78, type: 2}
-  m_PrefabInternal: {fileID: 779684288}
---- !u!81 &779684290
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 779684289}
-  m_Enabled: 1
 --- !u!1 &798755583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1709,106 @@ MonoBehaviour:
   monitorTransform: {fileID: 0}
   AxisAdjust: {x: 0, y: 0, z: 0}
   ModelAdjust: {x: 0, y: 0, z: 0}
+--- !u!1 &1003613804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1003613809}
+  - 20: {fileID: 1003613808}
+  - 124: {fileID: 1003613807}
+  - 92: {fileID: 1003613806}
+  - 81: {fileID: 1003613805}
+  - 114: {fileID: 1003613810}
+  m_Layer: 0
+  m_Name: ThirdPersonCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1003613805
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003613804}
+  m_Enabled: 1
+--- !u!92 &1003613806
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003613804}
+  m_Enabled: 1
+--- !u!124 &1003613807
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003613804}
+  m_Enabled: 1
+--- !u!20 &1003613808
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003613804}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0.019607844}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!4 &1003613809
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003613804}
+  m_LocalRotation: {x: -0.000000011364773, y: 0.9975641, z: -0.06975648, w: -0.00000016252382}
+  m_LocalPosition: {x: 0.85, y: 1.48, z: 2.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &1003613810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003613804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d8adf659040f3408e2baac954a75ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 1.2
+  RotateSpeed: 1.5
 --- !u!1 &1060438774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.8
+  serverIp: 192.168.1.2
   topicName: wise.mocap.position
 --- !u!114 &1098041986
 MonoBehaviour:
@@ -2873,11 +2949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1736019486}
-  - {fileID: 1953181923}
-  - {fileID: 132124188}
+  - {fileID: 1003613808}
   m_CurrentCamera: {fileID: 0}
   m_Size: {x: 10, y: 10, z: 10}
   m_SpotNear: 0.05
@@ -3128,11 +3200,6 @@ MonoBehaviour:
   monitorTransform: {fileID: 0}
   AxisAdjust: {x: 0, y: 0, z: 0}
   ModelAdjust: {x: 0, y: 0, z: 0}
---- !u!20 &1736019486 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 2083806, guid: 1a54c8ddebed7e942bdce3171a52ba78,
-    type: 2}
-  m_PrefabInternal: {fileID: 779684288}
 --- !u!1 &1792877997
 GameObject:
   m_ObjectHideFlags: 0
@@ -3312,10 +3379,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 485990, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3476,70 +3539,6 @@ Prefab:
       propertyPath: sender
       value: 
       objectReference: {fileID: 1964973524}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[0].r
-      value: 0.9862069
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[0].g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[0].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[1].r
-      value: 0.99016225
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[1].g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[1].b
-      value: 0.28676468
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[1].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[2].r
-      value: 0.8455882
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[2].g
-      value: 0.82466286
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[2].b
-      value: 0.087045826
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[2].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[3].r
-      value: 0.9632353
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[3].g
-      value: 0.9095052
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[3].b
-      value: 0.18414794
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: Colors.Array.data[3].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474338, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
-      propertyPath: MainColor
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11417566, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
     - {fileID: 11467518, guid: f00c9e5c0670f7c4ea2a52e365d2e89f, type: 2}
@@ -3762,11 +3761,6 @@ MonoBehaviour:
   monitorTransform: {fileID: 0}
   AxisAdjust: {x: 0, y: 0, z: 0}
   ModelAdjust: {x: 0, y: 0, z: 0}
---- !u!20 &1953181923 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 2085140, guid: 1a54c8ddebed7e942bdce3171a52ba78,
-    type: 2}
-  m_PrefabInternal: {fileID: 779684288}
 --- !u!1001 &1964973520
 Prefab:
   m_ObjectHideFlags: 0

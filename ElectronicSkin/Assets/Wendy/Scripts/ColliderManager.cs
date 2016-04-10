@@ -10,8 +10,19 @@ public class ColliderManager : MonoBehaviour {
 	private string selfID ;
 	public RabbitMQSenderServer sender;
 
+	//碰撞部位的ID
+	[System.NonSerialized]
+	public string colliderID;
+
+	private float vibrateInterval = 50f;
+	private float vibrateTimer = 0f;
+	private bool isReady;
+
 	// Use this for initialization
 	void Start () {
+
+		if (roadIDObj == null)
+			return;
 
 		MQMapperManager roadID = roadIDObj.GetComponent<MQMapperManager>();
 		selfID = roadID.selfID.ToString();	
@@ -41,19 +52,22 @@ public class ColliderManager : MonoBehaviour {
   				}
 		 	}
 		 */
-		if( !sender.IsReady() ) return;
+//		if( !sender.IsReady() ) return;
 
 //		JSONClass actionData = new JSONClass();
-		string actionData;
 
-		actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":0,\"times\":1}}}}}]";
-		sender.SendMessageToServer(actionData);
+//		string actionData;
+
+//		actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":0,\"times\":1}}}}}]";
+
 		//暫停50ms
-		Thread.Sleep(50);
+//		Thread.Sleep(50);
 
 //		Debug.Log("actionData" + actionData);
 //		sender.SendMessageToServer(actionData);
 		//sender.SendMessageToServer("\"id\":\"\",\"data\":{\"rightHand\":{ \"x\":0,\"y\":0,\"z\":0 },\"leftHand\":{ \"x\":0, \"y\":0, \"z\":0 },\"postion\":{\"x\":0.0, \"y\":0.0, \"z\":0.0 }}");
+		if (vibrateTimer > 0f)
+			vibrateTimer -= Time.deltaTime;
 	}
 
 	//轉換第一個字母成小寫
@@ -69,13 +83,30 @@ public class ColliderManager : MonoBehaviour {
 
 	void OnTriggerEnter(Collider target)
 	{
+		if (roadIDObj == null)
+			return;
+		
+		//過濾不必要碰撞的物件(自己,Untagged)
+		if (target.name.Contains(colliderID) || target.tag.Contains("Untagged"))
+		{
+			return;
+		}
+
 		if (target.tag == "CollisionBody")
 		{
+//			if ( vibrateTimer > 0f ) return;
+
 //			Debug.Log("touch objName = " + target.name);
 			touchPart = gameObject.name.Split('_');
 
 			touchPart[1] = toLowerFirstChar(touchPart[1]);
+
 //			Debug.Log("touchPart:"+touchPart[1]);
+			string actionData;
+			actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":0,\"times\":1}}}}}]";
+			sender.SendMessageToServer(actionData);
+			vibrateTimer = vibrateInterval * 0.001f; //轉成毫秒
+//			Debug.Log(actionData);
 
 		}
 	}

@@ -140,8 +140,11 @@ public class RabbitMQServer : MonoBehaviour {
 
 	void OnApplicationQuit ()
 	{
-		mqChannel.Close ();
-		Debug.Log ("Connection Close");
+		if (mqChannel != null) {
+			mqChannel.Close ();
+			Debug.Log ("Connection Close");
+		}
+			
 	}
 
 	void OnGUI () {

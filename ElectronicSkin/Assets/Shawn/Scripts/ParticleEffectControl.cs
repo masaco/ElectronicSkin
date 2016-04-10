@@ -14,7 +14,7 @@ public class ParticleInfo
 public class ParticleEffectControl : MonoBehaviour {
 
 	#region BaseVariable
-	string keyWord = "0";
+	string colliderID = "0";
 	MainEffectControl meshCtrl;
 	[System.NonSerialized]
 	public List<int> meshID = new List<int>();
@@ -52,6 +52,7 @@ public class ParticleEffectControl : MonoBehaviour {
 	private bool isCollsionObj;
 	private Vector3 collisionObjDir;
 	private BoxCollider boxCollider;
+	private ColliderManager collliManager;
 	public bool IsDetectObj;
 	#endregion
 
@@ -62,6 +63,8 @@ public class ParticleEffectControl : MonoBehaviour {
 		if (GetComponent<MeshFilter>())
 			Destroy(GetComponent<MeshFilter>());
 		boxCollider = GetComponent<BoxCollider>();
+		if (GetComponent<ColliderManager>())
+			collliManager = GetComponent<ColliderManager>();
         float size = Vector3.Magnitude(transform.localScale);
 		EffectDistance = size * 1.5f;
 		
@@ -73,7 +76,9 @@ public class ParticleEffectControl : MonoBehaviour {
 		tranShader = Shader.Find("Particles/Additive");
 		#region InitMainEffectControl
 		meshCtrl = mCtrl;
-		keyWord = meshCtrl.ID.ToString();
+		colliderID = meshCtrl.ID.ToString();
+		if ( collliManager )
+			collliManager.colliderID = colliderID;
 		Colors = meshCtrl.Colors;
 		colorPercent = meshCtrl.colorPercent;
 		totalPercent = meshCtrl.totalPercent;
@@ -86,6 +91,11 @@ public class ParticleEffectControl : MonoBehaviour {
 		particle = new ParticleSystem.Particle[ps.maxParticles];
 		if (meshCtrl.isPlayer)
 			ps.startSize = 0.003f;
+		if (meshCtrl.isPlayer && name.Contains (colliderID + "_Head")) {
+			return;
+			tag = "Untagged";
+		}
+			
 		Count = Mathf.FloorToInt(meshID.Count * fillRate);
 		ps.startSize = 0.0001f;
 		psRenderer = ps.GetComponent<Renderer>();
@@ -100,12 +110,12 @@ public class ParticleEffectControl : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.name.Contains(keyWord) || other.tag == "Untagged")
+		if (other.name.Contains(colliderID) || other.tag.Contains( "Untagged" ))
 		{
 			return;
 		}
 
-		if (other.tag == "CollisionBody")
+		if (other.tag.Contains( "CollisionBody" ))
 		{
 			collisionObjsDict.Add(other.transform, (transform.position - other.transform.position));
 			StartCoroutine(ImpulseCalculate(other.transform));
@@ -135,7 +145,7 @@ public class ParticleEffectControl : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if (other.tag == "CollisionObj" && isParticleReady)
+		if (other.tag.Contains( "CollisionObj" ) && isParticleReady)
 		{
 			isCollsionObj = true;
 			#region detectDirectionSwich
@@ -192,12 +202,12 @@ public class ParticleEffectControl : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.name.Contains(keyWord) || other.tag == "Untagged")
+		if (other.name.Contains(colliderID) || other.tag.Contains("Untagged"))
 		{
 			return;
 		}
 
-		if (other.tag == "CollisionBody")
+		if (other.tag.Contains( "CollisionBody") )
 		{
 			collisionObjsDict.Remove(other.transform);
 			foreach (ParticleInfo tempInfo in collsionObjList)
@@ -209,7 +219,7 @@ public class ParticleEffectControl : MonoBehaviour {
 				}
 			}
 		}
-		else if (other.tag == "CollisionObj")
+		else if (other.tag.Contains( "CollisionObj"))
 		{
 			isCollsionObj = false;
 		}
@@ -396,4 +406,10 @@ public class ParticleEffectControl : MonoBehaviour {
 		}
 	}
 	#endregion
+//	void OnDrawGizmosSelected() {
+//		Gizmos.color = Color.red;
+//		Gizmos.DrawSphere ( transform.position +transform.lossyScale.y/2f*transform.up, 0.05f);
+//		Gizmos.color = Color.blue;
+//		Gizmos.DrawSphere ( transform.position -transform.lossyScale.y/2f*transform.up, 0.05f);
+//	}
 }

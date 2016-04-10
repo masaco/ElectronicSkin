@@ -49,7 +49,6 @@ public class RabbitMQSenderServer : MonoBehaviour {
 		}
 	}
 	void StartServer () {
-
 		// connecting to rabbitMQ Server
 		factory = new ConnectionFactory() { Uri = "amqp://admin:admin@" + serverIP };
 		connection = factory.CreateConnection ();
@@ -63,6 +62,8 @@ public class RabbitMQSenderServer : MonoBehaviour {
 		channel.QueueBind (queueName, channelName, "");
 
 		isReady = true;
+		isStarted = true;
+
 	}
 
 	public bool IsReady ()
@@ -73,7 +74,9 @@ public class RabbitMQSenderServer : MonoBehaviour {
 
 	public void SendMessageToServer ( string message )
 	{
-		channel.BasicPublish( channelName, "", null, Encoding.UTF8.GetBytes( message ) );
+		if (isStarted) {
+			channel.BasicPublish (channelName, "", null, Encoding.UTF8.GetBytes (message));
+		}
 	}
 
 }

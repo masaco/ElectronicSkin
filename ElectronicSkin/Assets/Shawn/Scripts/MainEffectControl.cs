@@ -21,6 +21,8 @@ public enum MeshType {
 public class MainEffectControl : MonoBehaviour {
 	#region Base Variable
 	public CharacterColor MainColor = CharacterColor.WHITE;
+	public Mesh[] ManMeshs;
+	public Material[] ManMaterials;
 	public GameObject Character;
 	public MeshType BodyMeshType;
 	[System.NonSerialized]
@@ -45,18 +47,16 @@ public class MainEffectControl : MonoBehaviour {
 	public int ID;
 
 	public bool isPlayer;
-
 	private bool isReInit;
+
+	public AnimationCurve SFXCurve;
+	public AudioClip SFXClip;
 	#endregion
 
 	void Awake ()
 	{
-		
 		if (GetComponentInChildren<Camera>())
 			isPlayer = true;
-
-		if (isPlayer)
-			InvokeRepeating("Unload", 25f, 25f);
 
 		ID = Random.Range( 100000, 999999 );
 		FillRate = Mathf.Clamp01(FillRate);
@@ -72,9 +72,18 @@ public class MainEffectControl : MonoBehaviour {
 		if (BodyMeshType == MeshType.SkinMesh)
 		{
 			SkinMesh = GetComponentInChildren<SkinnedMeshRenderer>();
+//			SkinMesh.sharedMesh = ManMeshs [MainColor.GetHashCode ()];
+
+			Material[] tempMat = SkinMesh.materials;
+
+			tempMat[0] = ManMaterials [MainColor.GetHashCode ()];
+			tempMat[1] = ManMaterials [MainColor.GetHashCode ()];
+			SkinMesh.materials = tempMat;
+
 			SkinMesh.BakeMesh(bake);			
 			
 			Animator Anim = GetComponent<Animator>();
+			SoundTrigger soundTrigger;
 			#region Init Skeleton
 			foreach (ParticleEffectControl peCtrl in GetComponentsInChildren<ParticleEffectControl>())
 			{
@@ -84,12 +93,29 @@ public class MainEffectControl : MonoBehaviour {
 					case "Chest": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Chest).transform; peCtrl.name = "spine3"; break;
 					case "Spine": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Spine).transform; peCtrl.name = "spine2"; break;
 					case "Hips": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Hips).transform; break;
-					case "RightUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperArm).transform; 	peCtrl.name = "rightForeArm"; break;
-					case "RightLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerArm).transform; peCtrl.name = "rightArm"; break;
-					case "RightHand": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightHand).transform; break;
+					case "RightUpperArm": 
+						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperArm).transform; 	
+						peCtrl.name = "rightForeArm";
+						peCtrl.transform.localEulerAngles += Vector3.forward*180f;
+						break;
+					case "RightLowerArm": 
+						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerArm).transform; 
+						peCtrl.name = "rightArm"; 
+						peCtrl.transform.localEulerAngles += Vector3.forward*180f;
+						break;
+					case "RightHand": 
+						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightHand).transform;
+						peCtrl.transform.localEulerAngles += Vector3.forward*180f;
+//						soundTrigger = peCtrl.gameObject.AddComponent<SoundTrigger>();
+//						soundTrigger.Init( SFXClip,SFXCurve, ID.ToString());
+						break;
 					case "LeftUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform; peCtrl.name = "leftForeArm"; break;
 					case "LeftLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; peCtrl.name = "leftArm"; break;
-					case "LeftHand": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftHand).transform; break;
+					case "LeftHand": 
+						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftHand).transform;
+//						soundTrigger = peCtrl.gameObject.AddComponent<SoundTrigger>();
+//						soundTrigger.Init( SFXClip,SFXCurve, ID.ToString());
+						break;
 					case "RightUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).transform; peCtrl.name = "rightUpLeg"; break;
 					case "RightLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerLeg).transform; peCtrl.name = "rightLeg";break;
 					case "RightFoot": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightFoot).transform; break;
@@ -108,11 +134,7 @@ public class MainEffectControl : MonoBehaviour {
 		meshPointPosition = bake.vertices;
 	}
 
-	void Unload()
-	{
-		//Debug.Log("Unload");
-		Resources.UnloadUnusedAssets();
-    }
+
 
     void Start () {
 
@@ -212,11 +234,17 @@ public class MainEffectControl : MonoBehaviour {
 
 			for (int i = 0; i < 4; i++)
 			{
-				Colors[i] = mainColor;
+				Colors[i] = new Color(  
+					mainColor.r+Random.Range( -0.1f, 0.1f ),
+					mainColor.g+Random.Range( -0.1f, 0.1f ),
+					mainColor.b+Random.Range( -0.1f, 0.1f ),
+					1f
+				);
             }
 				
         }
 		
 	}
 	#endregion
+
 }

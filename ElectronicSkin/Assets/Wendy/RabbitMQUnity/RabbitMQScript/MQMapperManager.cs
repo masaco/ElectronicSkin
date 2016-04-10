@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NccuWise;
+//using System;
 
 using SimpleJSON;
 
@@ -20,7 +21,7 @@ public class MQMapperManager : MonoBehaviour {
 
 	private MQMapperItem[][] mappers;
 
-
+	private Vector3 preV3;
 	// all saved messages
 	private List<string> messages;
 	public int messageBufferedLimit = 5;
@@ -67,6 +68,7 @@ public class MQMapperManager : MonoBehaviour {
 	
 	void LoadJsonRots ( string jsonString )
 	{
+		
 		// convert pure string to json node
 		JSONNode nodesAll = JSON.Parse( jsonString );
 
@@ -80,6 +82,14 @@ public class MQMapperManager : MonoBehaviour {
 			return;
 		}
 
+//
+//		Vector3 leftArm = new Vector3 (
+//			                  nodesDataSet [0] ["data"] ["leftArm"] ["x"].AsFloat, 
+//			                  nodesDataSet [0] ["data"] ["leftArm"] ["y"].AsFloat, 
+//			                  nodesDataSet [0] ["data"] ["leftArm"] ["z"].AsFloat);
+
+//		Debug.Log ("leftArm:"+leftArm );
+//
 		// 讀取wise的id值
 		//PlayerIDWise = int.Parse(nodes[0]["id"]) ;  
 		// 資料格式 "dataSet":[{"id":"user1","data":{關節資料}}]
@@ -97,6 +107,19 @@ public class MQMapperManager : MonoBehaviour {
 					Vector3 newRotation = new Vector3( nodesDataSet[i]["data"][ indexName ]["x"].AsFloat, 
 														nodesDataSet[i]["data"][ indexName ]["y"].AsFloat, 
 														nodesDataSet[i]["data"][ indexName ]["z"].AsFloat );
+
+					Vector3 deltaV3 = newRotation - preV3;
+
+//					if ( indexName.Contains("leftArm") )
+//						Debug.Log ("CurrentTime：" + System.DateTime.Now + ","+ System.DateTime.Now.Millisecond +
+//							"  createTime："+nodesAll["createTime"]+"   leftArm:"+newRotation + " deltaV:" + deltaV3 );
+
+
+//					Vector3 LogV3 = newRotation - deltaV3*0.2f;
+
+
+					preV3 = newRotation;
+
 					mappers[i][j].ApplyJsonRot( newRotation );
 				}
 
@@ -171,8 +194,10 @@ public class MQMapperManager : MonoBehaviour {
 			{
 				Transform tempSource = FindChildNested( skeletonObj[i].transform, mappers[i][j].name );
 
-				if( tempSource != null )
-					mappers[i][j].monitorTransform = tempSource;
+				if (tempSource != null) {
+					mappers [i] [j].monitorTransform = tempSource;
+//					Debug.Log (tempSource.transform.root.name+"_"+tempSource.name+"："+tempSource.eulerAngles);
+				}
 
 			}
 
