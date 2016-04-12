@@ -153,7 +153,7 @@ public class SelectBody : MonoBehaviour {
 		float slowFade = during / duringTime;
 		if (state == -1)
 			fastFade = (during - 1f) / 2f;
-        fadeLight.intensity = Mathf.Lerp(0f, 6f, fastFade);
+        fadeLight.intensity = Mathf.Lerp(0f, 3f, fastFade);
 		fadeLight.spotAngle = Mathf.Lerp(45f, 90f, fastFade);
 		fadeDirLight.intensity = Mathf.Lerp(0f, 0.2f, fastFade);
 		RenderSettings.ambientIntensity = Mathf.Lerp(0f, 1.5f, fastFade);
@@ -176,9 +176,14 @@ public class SelectBody : MonoBehaviour {
 
 	void SwitchBody( int state)
 	{
-		bodyID++;
-		bodyID = bodyID % 7;
-		Body.SendMessage ("Change", bodyID, SendMessageOptions.DontRequireReceiver);
+		bodyID += state;
+
+		if (bodyID > 6)
+			bodyID = 0;
+		else if (bodyID < 0)
+			bodyID = 6;
+
+		Body.SendMessage ("ChangeBody", bodyID, SendMessageOptions.DontRequireReceiver);
 		Body.SendMessage("ReInit", SendMessageOptions.DontRequireReceiver);
     }
 }

@@ -326,6 +326,14 @@ Prefab:
       propertyPath: m_BackGroundColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11419678, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: ManMeshs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4300000, guid: ab6e7d1bafc9d6f48aa6a71dd1d17fb6, type: 3}
+    - target: {fileID: 11419678, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: ManMeshs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4300000, guid: b87cfb7d47170c84b8b218c27eb9ab01, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
   m_IsPrefabParent: 0

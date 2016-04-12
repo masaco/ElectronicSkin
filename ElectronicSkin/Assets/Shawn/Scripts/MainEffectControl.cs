@@ -56,6 +56,7 @@ public class MainEffectControl : MonoBehaviour {
 
 	void Awake ()
 	{
+
 		if (!isPlayer)
 			GetComponentInChildren<SZVRDevice>().gameObject.SetActive(false);
 
@@ -131,7 +132,7 @@ public class MainEffectControl : MonoBehaviour {
     void Start () {
 
 		#region Switch SkinMesh or NormalMesh
-		for ( int i = 0; i < meshPointPosition.Length; i++ )
+		for ( int i = 0; i < 26938; i++ )//meshPointPosition.Length
 		{
 			foreach (ParticleEffectControl pCtrls in particleCtrls)
 			{
