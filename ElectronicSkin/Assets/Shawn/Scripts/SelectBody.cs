@@ -4,15 +4,15 @@ using System.Collections;
 public class SelectBody : MonoBehaviour {
 
 	private int bodyID = 0;
-	public GameObject[] Body;
-	public Camera cam;
+	public GameObject Body;
+	public Camera[] cam;
 
 	public Light fadeLight;
 	public Light fadeDirLight;
 	public MeshRenderer fadeMirrorMat;
 	public MeshRenderer fadeSceneMat;
 
-	private Animator animator;
+//	private Animator animator;
 	private Vector3 StartPos;
 	private Vector3 StartRot;
 	
@@ -30,13 +30,13 @@ public class SelectBody : MonoBehaviour {
 	private bool isReady;
 
 	void Awake () {
-		
+		foreach ( Camera tempCam in cam )
+			tempCam.backgroundColor = Color.black;
     }
 
-	IEnumerator Start() {
+	IEnumerator Start() {		
+//		animator = Body.GetComponent<Animator>();
 		yield return new WaitForSeconds(3f);
-		Body[bodyID].SetActive(true);
-		animator = Body[bodyID].GetComponent<Animator>();
 		StartCoroutine(Fade(1));
 		isReady = true;
     }
@@ -46,27 +46,27 @@ public class SelectBody : MonoBehaviour {
 			return;
 
 		#region Character Control
-		cam.transform.localEulerAngles += Vector3.right*  Input.GetAxis("Mouse Y")*-1;
+//		cam.transform.localEulerAngles += Vector3.right*  Input.GetAxis("Mouse Y")*-1;
 		transform.localEulerAngles += Vector3.up * Input.GetAxis("Mouse X");
 
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-			animator.SetTrigger("Act1");
-		if (Input.GetKeyDown(KeyCode.Alpha2))
-			animator.SetTrigger("Act2");
-		if (Input.GetKeyDown(KeyCode.Alpha3))
-			animator.SetTrigger("Act3");
-		if (Input.GetKeyDown(KeyCode.Alpha4))
-			animator.SetTrigger("Fly");
+//		if (Input.GetKeyDown(KeyCode.Alpha1))
+//			animator.SetTrigger("Act1");
+//		if (Input.GetKeyDown(KeyCode.Alpha2))
+//			animator.SetTrigger("Act2");
+//		if (Input.GetKeyDown(KeyCode.Alpha3))
+//			animator.SetTrigger("Act3");
+//		if (Input.GetKeyDown(KeyCode.Alpha4))
+//			animator.SetTrigger("Fly");
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			transform.position = StartPos;
 			transform.eulerAngles = StartRot;
 		}
 
-		if (Input.GetAxis("Horizontal")!=0f || Input.GetAxis("Vertical") != 0f)
-			animator.SetBool("Walk", true);
-		else
-			animator.SetBool("Walk", false);
+//		if (Input.GetAxis("Horizontal")!=0f || Input.GetAxis("Vertical") != 0f)
+//			animator.SetBool("Walk", true);
+//		else
+//			animator.SetBool("Walk", false);
 
 		transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * Time.deltaTime, Space.Self);
 		#endregion
@@ -86,10 +86,10 @@ public class SelectBody : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.PageDown))
 				SwitchBody(-1);
 
-			if (Input.GetKeyDown(KeyCode.Home) && fadeState == FadeState.Ready)
-				StartCoroutine(Fade(1));
-			if (Input.GetKeyDown(KeyCode.End) && fadeState == FadeState.Ready)
-				StartCoroutine(Fade(-1));
+//			if (Input.GetKeyDown(KeyCode.Home) && fadeState == FadeState.Ready)
+//				StartCoroutine(Fade(1));
+//			if (Input.GetKeyDown(KeyCode.End) && fadeState == FadeState.Ready)
+//				StartCoroutine(Fade(-1));
 		}
 		#endregion
 	}
@@ -140,7 +140,7 @@ public class SelectBody : MonoBehaviour {
 					yield return new WaitForEndOfFrame();
 					during -= Time.deltaTime*2f;
 					fadeList(during, -1, duringTime);
-					Body[bodyID].BroadcastMessage("FadeOutParticle", SendMessageOptions.DontRequireReceiver);
+					Body.BroadcastMessage("FadeOutParticle", SendMessageOptions.DontRequireReceiver);
 				}
 			}
 		}			
@@ -161,7 +161,8 @@ public class SelectBody : MonoBehaviour {
 		fadeMirrorMat.material.SetColor("_Color", Color.white * Mathf.Lerp(0f, 0.3f, slowFade));
 		float brightness = Mathf.Lerp(0f, 0.1f, fastFade);
 		fadeSceneMat.material.SetColor("_EmissionColor", new Color(brightness, brightness, brightness, 1f));
-		cam.backgroundColor = Color.white * Mathf.Lerp(0f, 0.2f, fastFade);
+		foreach ( Camera tempCam in cam )
+			tempCam.backgroundColor = Color.white * Mathf.Lerp(0f, 0.2f, fastFade);
 	}
 
 	IEnumerator FadeAndSwitchBody( int state ) {
@@ -175,21 +176,9 @@ public class SelectBody : MonoBehaviour {
 
 	void SwitchBody( int state)
 	{
-		if (state == 1)
-			bodyID++;
-		else
-			bodyID--;
-
-		if (bodyID < 0)
-			bodyID = 6;
-
+		bodyID++;
 		bodyID = bodyID % 7;
-
-		foreach (GameObject body in Body)
-			body.SetActive(false);
-
-		Body[bodyID].SetActive(true);
-		animator = Body[bodyID].GetComponent<Animator>();
-		Body[bodyID].SendMessage("ReInit", SendMessageOptions.DontRequireReceiver);
+		Body.SendMessage ("Change", bodyID, SendMessageOptions.DontRequireReceiver);
+		Body.SendMessage("ReInit", SendMessageOptions.DontRequireReceiver);
     }
 }

@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &178456
 GameObject:
   m_ObjectHideFlags: 1
@@ -2302,6 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11407688
 MonoBehaviour:
@@ -2327,6 +2328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11418526
 MonoBehaviour:
@@ -2369,6 +2371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11422380
 MonoBehaviour:
@@ -2446,6 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11441852
 MonoBehaviour:
@@ -2458,6 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11445778
 MonoBehaviour:
@@ -2477,8 +2482,8 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 5a4feda876141614f8f825ce10c71201, type: 3}
   - {fileID: 4300000, guid: e89bcd16ef7dafd449594d81f59f56ff, type: 3}
   - {fileID: 4300000, guid: 2986502177d50214f8b8c80edbdba67b, type: 3}
-  - {fileID: 4300000, guid: a8cbac29e04cede41afda7ed508871a7, type: 3}
   - {fileID: 4300000, guid: 4948b5b8193d2e64e9953b4c13c0c02d, type: 3}
+  - {fileID: 4300000, guid: ff3b774f7d84b2c489df06e12695778f, type: 3}
   ManMaterials:
   - {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
   - {fileID: 2100000, guid: 8707e80ee8d66a3429786b5b2a22941f, type: 2}
@@ -2553,6 +2558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11453744
 MonoBehaviour:
@@ -2565,6 +2571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 1
 --- !u!114 &11454938
 MonoBehaviour:
@@ -2590,6 +2597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11462904
 MonoBehaviour:
@@ -2615,6 +2623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11471322
 MonoBehaviour:
@@ -2627,6 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11472894
 MonoBehaviour:
@@ -2652,6 +2662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11477730
 MonoBehaviour:
@@ -2677,6 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!114 &11481316
 MonoBehaviour:
@@ -2702,6 +2714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 1
 --- !u!114 &11488938
 MonoBehaviour:
@@ -2741,6 +2754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 1
 --- !u!114 &11496208
 MonoBehaviour:
@@ -2753,6 +2767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 1
 --- !u!114 &11497250
 MonoBehaviour:
@@ -2765,6 +2780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e141257cdc9c4d8fe733733c6e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshID: 
   IsDetectObj: 0
 --- !u!137 &13774730
 SkinnedMeshRenderer:
@@ -26659,11 +26675,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: ManMeshs.Array.data[5]
       value: 
-      objectReference: {fileID: 4300000, guid: a8cbac29e04cede41afda7ed508871a7, type: 3}
+      objectReference: {fileID: 4300000, guid: 4948b5b8193d2e64e9953b4c13c0c02d, type: 3}
     - target: {fileID: 0}
       propertyPath: ManMeshs.Array.data[6]
       value: 
-      objectReference: {fileID: 4300000, guid: 4948b5b8193d2e64e9953b4c13c0c02d, type: 3}
+      objectReference: {fileID: 4300000, guid: ff3b774f7d84b2c489df06e12695778f, type: 3}
     - target: {fileID: 0}
       propertyPath: ManMaterials.Array.data[0]
       value: 
@@ -26692,6 +26708,10 @@ Prefab:
       propertyPath: ManMaterials.Array.data[6]
       value: 
       objectReference: {fileID: 2100000, guid: 6b271a196ba6cdd47ae49ea5ce99c4c0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124086}

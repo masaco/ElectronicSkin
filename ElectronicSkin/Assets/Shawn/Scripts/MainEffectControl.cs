@@ -51,12 +51,13 @@ public class MainEffectControl : MonoBehaviour {
 
 	public AnimationCurve SFXCurve;
 	public AudioClip SFXClip;
+	private CharacterColor preColor;
 	#endregion
 
 	void Awake ()
 	{
-		if (GetComponentInChildren<Camera>())
-			isPlayer = true;
+		if (!isPlayer)
+			GetComponentInChildren<SZVRDevice>().gameObject.SetActive(false);
 
 		ID = Random.Range( 100000, 999999 );
 		FillRate = Mathf.Clamp01(FillRate);
@@ -72,13 +73,6 @@ public class MainEffectControl : MonoBehaviour {
 		if (BodyMeshType == MeshType.SkinMesh)
 		{
 			SkinMesh = GetComponentInChildren<SkinnedMeshRenderer>();
-//			SkinMesh.sharedMesh = ManMeshs [MainColor.GetHashCode ()];
-
-			Material[] tempMat = SkinMesh.materials;
-
-			tempMat[0] = ManMaterials [MainColor.GetHashCode ()];
-			tempMat[1] = ManMaterials [MainColor.GetHashCode ()];
-			SkinMesh.materials = tempMat;
 
 			SkinMesh.BakeMesh(bake);			
 			
@@ -134,8 +128,6 @@ public class MainEffectControl : MonoBehaviour {
 		meshPointPosition = bake.vertices;
 	}
 
-
-
     void Start () {
 
 		#region Switch SkinMesh or NormalMesh
@@ -156,6 +148,7 @@ public class MainEffectControl : MonoBehaviour {
 					
 			}
 		}
+//		SkinMesh.sharedMesh = ManMeshs [MainColor.GetHashCode ()];
 		#endregion
 
 		#region Rename Particle Control Object
@@ -168,9 +161,18 @@ public class MainEffectControl : MonoBehaviour {
 		#endregion
 
 		//StartCoroutine(reflash());
-		InvokeRepeating("set", 0f, reflashRate);
+		InvokeRepeating("Set", 0f, reflashRate);
 		isReInit = true;
 
+	}
+
+	void Update ()
+	{
+		if (preColor != MainColor) 
+		{
+			preColor = MainColor;
+			ChangeBody (preColor.GetHashCode());
+		}
 	}
 
 	#region Base Function
@@ -186,7 +188,22 @@ public class MainEffectControl : MonoBehaviour {
 		}
 	}
 
-	void set()
+	void ChangeBody ( int type)
+	{
+		SkinMesh.sharedMesh = ManMeshs [type];
+		MainColor = (CharacterColor)type;
+		Colors = new Color [1];
+		InitColor ();
+		Material[] tempMat = SkinMesh.materials;
+
+		tempMat[0] = ManMaterials [type];
+		tempMat[1] = ManMaterials [type];
+		SkinMesh.materials = tempMat;
+		foreach (ParticleEffectControl pCtrls in particleCtrls)
+			pCtrls.ChangeColor ();
+	}
+
+	void Set()
 	{
 		if (BodyMeshType == MeshType.SkinMesh)
 		{
@@ -207,14 +224,14 @@ public class MainEffectControl : MonoBehaviour {
 		return tempV3array;
     }
 	
-	IEnumerator reflash()
-	{
-		while (true)
-		{
-			set();
-			yield return new WaitForSeconds(reflashRate);
-		}
-	}
+//	IEnumerator reflash()
+//	{
+//		while (true)
+//		{
+//			set();
+//			yield return new WaitForSeconds(reflashRate);
+//		}
+//	}
 
 	void InitColor ()
 	{
@@ -245,6 +262,5 @@ public class MainEffectControl : MonoBehaviour {
         }
 		
 	}
-	#endregion
-
+	#endregion	
 }

@@ -16,7 +16,9 @@ public class ParticleEffectControl : MonoBehaviour {
 	#region BaseVariable
 	string colliderID = "0";
 	MainEffectControl meshCtrl;
-	[System.NonSerialized]
+//	[System.NonSerialized]
+
+//	public Dictionary< int, List<int> >MeshNewID = new Dictionary<int, List<int>>();
 	public List<int> meshID = new List<int>();
 	[System.NonSerialized]
 	public Bounds bounds;
@@ -103,9 +105,16 @@ public class ParticleEffectControl : MonoBehaviour {
 		Color newColor = new Color(Colors[0].r, Colors[0].g, Colors[0].b, 1f);
 		psRenderer.material.SetColor("_TintColor", newColor);
 		psRenderer.material.shader = origShader;
-		InvokeRepeating("set", 0f, reflashRate);
+		InvokeRepeating("Set", 0f, reflashRate);
 		//StartCoroutine(reflash());
 		StartCoroutine(FadeInParticle());
+
+	}
+
+	public void ChangeColor()
+	{
+		Colors = meshCtrl.Colors;
+		ColorID = Mathf.FloorToInt(Mathf.Pow(2f, meshCtrl.MainColor.GetHashCode()));
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -225,12 +234,13 @@ public class ParticleEffectControl : MonoBehaviour {
 		}
 	}
 	
-	void set()
+	void Set()
 	{
 		#region InitParticle
 		int lastCount = ps.particleCount;
 		
 		ps.Emit(Count);
+		ps.startLifetime = 0.8f;
 		ps.GetParticles(particle);
 
 		foreach (ParticleInfo tempInfo in collsionObjList)
@@ -288,8 +298,8 @@ public class ParticleEffectControl : MonoBehaviour {
 				if (IsDetectObj)
 				{
 					Vector3 impulseDir = Random.onUnitSphere;
-					if (Vector3.Angle(collisionObjDir, impulseDir) < 75f)
-						particle[i + lastCount].velocity = impulseDir * 0.2f;
+					if (Vector3.Angle(collisionObjDir, impulseDir) < 50f)
+						particle[i + lastCount].velocity = impulseDir * 0.8f;
 					particle[i + lastCount].startSize = 0.007f;
 					if (psRenderer.material.shader != tranShader)
 						psRenderer.material.shader = tranShader;
@@ -335,6 +345,7 @@ public class ParticleEffectControl : MonoBehaviour {
 				#endregion
 			}
 
+			particle[i + lastCount].velocity += Vector3.up*0.035f;
 		}
 
 		ps.SetParticles(particle, ps.particleCount);
@@ -401,7 +412,7 @@ public class ParticleEffectControl : MonoBehaviour {
 	{
 		while (true)
 		{
-			set();
+			Set();
 			yield return new WaitForSeconds(reflashRate);
 		}
 	}
