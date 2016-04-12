@@ -168,6 +168,7 @@ public class MainEffectControl : MonoBehaviour {
 		//StartCoroutine(reflash());
 		InvokeRepeating("Set", 0f, reflashRate);
 		isReInit = true;
+		ChangeBody (preColor.GetHashCode());
 
 	}
 

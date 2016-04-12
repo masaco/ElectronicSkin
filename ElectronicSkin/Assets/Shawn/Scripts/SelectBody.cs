@@ -7,6 +7,10 @@ public class SelectBody : MonoBehaviour {
 	public GameObject Body;
 	public Camera[] cam;
 
+	public Color[] btnColor;
+
+	public ParticleSystem[] SelectBtnsParticle;
+
 	public Light fadeLight;
 	public Light fadeDirLight;
 	public MeshRenderer fadeMirrorMat;
@@ -15,7 +19,8 @@ public class SelectBody : MonoBehaviour {
 //	private Animator animator;
 	private Vector3 StartPos;
 	private Vector3 StartRot;
-	
+
+	private int btnCount;
 
 	enum FadeState {
 		Fading,
@@ -32,6 +37,11 @@ public class SelectBody : MonoBehaviour {
 	void Awake () {
 		foreach ( Camera tempCam in cam )
 			tempCam.backgroundColor = Color.black;
+	
+		SelectBtnsParticle [0].startColor = btnColor [6];
+		SelectBtnsParticle [1].startColor = btnColor [1];
+		SelectBtnsParticle [2].startColor = btnColor [0];
+			
     }
 
 	IEnumerator Start() {		
@@ -165,25 +175,46 @@ public class SelectBody : MonoBehaviour {
 			tempCam.backgroundColor = Color.white * Mathf.Lerp(0f, 0.2f, fastFade);
 	}
 
+	void BtnDown( int num )
+	{
+		Debug.Log (num);
+		StartCoroutine(FadeAndSwitchBody(num));
+	}
+
 	IEnumerator FadeAndSwitchBody( int state ) {
+		SelectBtnsParticle [0].gameObject.SetActive (false);
+		SelectBtnsParticle [1].gameObject.SetActive (false);
+		SelectBtnsParticle [2].gameObject.SetActive (false);
 		isFadeSwitch = true;
 		yield return Fade( -1 );
 		SwitchBody(state);
 		yield return new WaitForSeconds(0.3f);
+		SelectBtnsParticle [0].gameObject.SetActive (true);
+		SelectBtnsParticle [1].gameObject.SetActive (true);
+		SelectBtnsParticle [2].gameObject.SetActive (true);
 		yield return Fade(1);
+
 		isFadeSwitch = false;
 	}
 
 	void SwitchBody( int state)
 	{
 		bodyID += state;
+		bodyID = GetNum (bodyID);
+		SelectBtnsParticle [0].startColor = btnColor [GetNum(bodyID-1)];
+		SelectBtnsParticle [1].startColor = btnColor [GetNum(bodyID+1)];
+		SelectBtnsParticle [2].startColor = btnColor [bodyID];
 
-		if (bodyID > 6)
-			bodyID = 0;
-		else if (bodyID < 0)
-			bodyID = 6;
-
-		Body.SendMessage ("ChangeBody", bodyID, SendMessageOptions.DontRequireReceiver);
+		Body.SendMessage ("ChangeBody", GetNum(bodyID), SendMessageOptions.DontRequireReceiver);
 		Body.SendMessage("ReInit", SendMessageOptions.DontRequireReceiver);
     }
+
+	int GetNum( int num )
+	{
+		if (num > 6)
+			num = 0;
+		else if (num < 0)
+			num = 6;
+		return num;
+	}
 }
