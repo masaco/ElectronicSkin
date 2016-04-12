@@ -345,7 +345,7 @@ public class ParticleEffectControl : MonoBehaviour {
 				#endregion
 			}
 
-			particle[i + lastCount].velocity += Vector3.up*0.035f;
+			particle[i + lastCount].velocity += Vector3.up*0.02f;
 		}
 
 		ps.SetParticles(particle, ps.particleCount);

@@ -28,8 +28,8 @@ public class MQMapperManager : MonoBehaviour {
 
 	void Awake ()
 	{
-//		mappers = new MQMapperItem[skeletonObj.Length][];
-		mappers = new MQMapperItem[2][];
+		mappers = new MQMapperItem[skeletonObj.Length][];
+//		mappers = new MQMapperItem[2][];
 
 		for(int i = 0; i < mappers.Length ; i++)
 		{

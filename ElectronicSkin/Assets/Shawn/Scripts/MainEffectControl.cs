@@ -19,6 +19,7 @@ public enum MeshType {
 }
 
 public class MainEffectControl : MonoBehaviour {
+
 	#region Base Variable
 	public CharacterColor MainColor = CharacterColor.WHITE;
 	public Mesh[] ManMeshs;
@@ -58,7 +59,10 @@ public class MainEffectControl : MonoBehaviour {
 	{
 
 		if (!isPlayer)
+		{
 			GetComponentInChildren<SZVRDevice>().gameObject.SetActive(false);
+		}
+
 
 		ID = Random.Range( 100000, 999999 );
 		FillRate = Mathf.Clamp01(FillRate);
@@ -189,7 +193,7 @@ public class MainEffectControl : MonoBehaviour {
 		}
 	}
 
-	void ChangeBody ( int type)
+	public void ChangeBody ( int type)
 	{
 		SkinMesh.sharedMesh = ManMeshs [type];
 		MainColor = (CharacterColor)type;
