@@ -29,10 +29,10 @@ public class SeclectSender : MonoBehaviour {
   				"colorID":"1"
 		 	}
 		 */
-		ColorDataSender(4);
+
 	}
 
-	void ColorDataSender(int colorID)
+	public void ColorDataSender(int colorID)
 	{
 		if (roadIDObj == null) return;
 

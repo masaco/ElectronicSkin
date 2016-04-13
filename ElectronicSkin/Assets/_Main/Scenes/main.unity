@@ -1880,13 +1880,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rabbitServer: {fileID: 1098041985}
   userPlayer: {fileID: 341915400}
-  playerIndex: 5
+  playerIndex: 1
   isPlayerIndexSettingUp: 0
   movePlayers:
-  - {fileID: 1020730792}
-  - {fileID: 1020730792}
   - {fileID: 1517934257}
-  - {fileID: 1020730792}
   smoothData: 1
   smoothAmount: 10
   inputXrange: {x: 0, y: 400}
@@ -2941,8 +2938,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MQSelfID: {fileID: 749677943}
   MQColorID: {fileID: 75435619}
-  Player: {fileID: 341915397}
-  OtherPlayer: {fileID: 1517934254}
+  Player:
+  - {fileID: 341915397}
+  - {fileID: 1517934254}
 --- !u!4 &1601581838
 Transform:
   m_ObjectHideFlags: 0

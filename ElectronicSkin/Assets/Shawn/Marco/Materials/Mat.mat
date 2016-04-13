@@ -38,6 +38,27 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ref
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ReflectionTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -80,27 +101,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Cube
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Ref
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ReflectionTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _LightMap
         second:
           m_Texture: {fileID: 0}
@@ -123,6 +123,26 @@ Material:
         first:
           name: _Shininess
         second: 0.01
+      data:
+        first:
+          name: _BlendLevel
+        second: 0.16
+      data:
+        first:
+          name: _Bumpness
+        second: 0.5
+      data:
+        first:
+          name: _RefRate
+        second: 0.96
+      data:
+        first:
+          name: _Distortion
+        second: 0.97
+      data:
+        first:
+          name: _Transparency
+        second: 0
       data:
         first:
           name: _Parallax
@@ -159,26 +179,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _BlendLevel
-        second: 0.16
-      data:
-        first:
-          name: _Bumpness
-        second: 0.5
-      data:
-        first:
-          name: _RefRate
-        second: 0.96
-      data:
-        first:
-          name: _Distortion
-        second: 0.97
-      data:
-        first:
-          name: _Transparency
-        second: 0
     m_Colors:
       data:
         first:
@@ -194,12 +194,12 @@ Material:
         second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
-      data:
-        first:
           name: _ReflectColor
         second: {r: 1, g: 1, b: 1, a: 0.5}
+      data:
+        first:
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
           name: _RefColor
