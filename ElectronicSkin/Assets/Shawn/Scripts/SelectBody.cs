@@ -41,7 +41,10 @@ public class SelectBody : MonoBehaviour {
 		SelectBtnsParticle [0].startColor = btnColor [6];
 		SelectBtnsParticle [1].startColor = btnColor [1];
 		SelectBtnsParticle [2].startColor = btnColor [0];
-			
+		foreach (ParticleSystem ps in SelectBtnsParticle) {
+			ps.emissionRate = 0f;
+		}
+
     }
 
 	IEnumerator Start() {		
@@ -49,6 +52,9 @@ public class SelectBody : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 		StartCoroutine(Fade(1));
 		isReady = true;
+		foreach (ParticleSystem ps in SelectBtnsParticle) {
+			ps.emissionRate = 500f;
+		}
     }
 	
 	void Update () {
@@ -165,7 +171,7 @@ public class SelectBody : MonoBehaviour {
 			fastFade = (during - 1f) / 2f;
         fadeLight.intensity = Mathf.Lerp(0f, 3f, fastFade);
 		fadeLight.spotAngle = Mathf.Lerp(45f, 90f, fastFade);
-		fadeDirLight.intensity = Mathf.Lerp(0f, 0.2f, fastFade);
+		fadeDirLight.intensity = Mathf.Lerp(0f, 0.1f, fastFade);
 		RenderSettings.ambientIntensity = Mathf.Lerp(0f, 1.5f, fastFade);
 		fadeMirrorMat.material.SetFloat("_Transparency", Mathf.Lerp(1f, 0f, fastFade));
 		fadeMirrorMat.material.SetColor("_Color", Color.white * Mathf.Lerp(0f, 0.3f, slowFade));
@@ -177,21 +183,21 @@ public class SelectBody : MonoBehaviour {
 
 	void BtnDown( int num )
 	{
-		Debug.Log (num);
 		StartCoroutine(FadeAndSwitchBody(num));
 	}
 
 	IEnumerator FadeAndSwitchBody( int state ) {
-		SelectBtnsParticle [0].gameObject.SetActive (false);
-		SelectBtnsParticle [1].gameObject.SetActive (false);
-		SelectBtnsParticle [2].gameObject.SetActive (false);
+		foreach (ParticleSystem ps in SelectBtnsParticle) {
+			ps.emissionRate = 0f;
+		}	
+
 		isFadeSwitch = true;
 		yield return Fade( -1 );
 		SwitchBody(state);
 		yield return new WaitForSeconds(0.3f);
-		SelectBtnsParticle [0].gameObject.SetActive (true);
-		SelectBtnsParticle [1].gameObject.SetActive (true);
-		SelectBtnsParticle [2].gameObject.SetActive (true);
+		foreach (ParticleSystem ps in SelectBtnsParticle) {
+			ps.emissionRate = 500f;
+		}	
 		yield return Fade(1);
 
 		isFadeSwitch = false;

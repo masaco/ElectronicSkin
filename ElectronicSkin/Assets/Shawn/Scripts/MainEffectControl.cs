@@ -46,6 +46,8 @@ public class MainEffectControl : MonoBehaviour {
 	private ParticleEffectControl[] particleCtrls;
 	[System.NonSerialized]
 	public int ID;
+	[System.NonSerialized]
+	public BoxCollider HeadBox;
 
 	public bool isPlayer;
 	private bool isReInit;
@@ -88,7 +90,7 @@ public class MainEffectControl : MonoBehaviour {
 			{
 				switch (peCtrl.name)
 				{
-					case "Head": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Head).transform; break;
+					case "Head": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Head).transform; HeadBox = peCtrl.GetComponent<BoxCollider>(); break;
 					case "Chest": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Chest).transform; peCtrl.name = "spine3"; break;
 					case "Spine": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Spine).transform; peCtrl.name = "spine2"; break;
 					case "Hips": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.Hips).transform; break;

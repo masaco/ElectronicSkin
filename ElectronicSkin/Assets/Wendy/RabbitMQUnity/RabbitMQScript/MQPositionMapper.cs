@@ -92,6 +92,8 @@ public class MQPositionMapper : MonoBehaviour {
 			string msg = messages[0];
 			messages.RemoveAt(0);
 			LoadJsonPos( msg );
+
+//			Debug.Log (msg);
 			
 			// 限制每個 frame 最多讀取幾筆資料
 			// 防止一個 frame 裡面有太多比資料，造成程式 lag
@@ -135,10 +137,13 @@ public class MQPositionMapper : MonoBehaviour {
 		//
 		// 然後這支程式其實很笨，他並不知道這筆 json 是哪一個 player 的資料
 		// 所以會從 p1 開啟檢查到 p5，看是哪一個 player 的資料
-		string playerID = nodes["id"];
+
+		string playerID = nodes["id"]; 
+
 //		Debug.Log("playerID = " +playerID );
-//		for (int i=0; i< movePlayers.Length; i++) {
-		for (int i=0; i< 1; i++) {
+
+		for (int i=0; i< movePlayers.Length; i++) {
+//		for (int i=0; i< 1; i++) {
 			
 			// 攝影機組會傳入 user1, user2...
 //			string IndexName = "user" + (i+1).ToString(); 

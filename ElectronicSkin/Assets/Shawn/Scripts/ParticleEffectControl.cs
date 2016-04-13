@@ -55,6 +55,7 @@ public class ParticleEffectControl : MonoBehaviour {
 	private Vector3 collisionObjDir;
 	private BoxCollider boxCollider;
 	private ColliderManager collliManager;
+	private BoxCollider headBox;
 	public bool IsDetectObj;
 	#endregion
 
@@ -86,6 +87,7 @@ public class ParticleEffectControl : MonoBehaviour {
 		totalPercent = meshCtrl.totalPercent;
 		fillRate = meshCtrl.FillRate;
 		blurRate = meshCtrl.BlurRate;
+		headBox = meshCtrl.HeadBox;
 		//reflashRate = meshCtrl.SubReflashRate;
 		ColorID = Mathf.FloorToInt(Mathf.Pow(2f, meshCtrl.MainColor.GetHashCode()));
 		#endregion
@@ -105,6 +107,7 @@ public class ParticleEffectControl : MonoBehaviour {
 		Color newColor = new Color(Colors[0].r, Colors[0].g, Colors[0].b, 1f);
 		psRenderer.material.SetColor("_TintColor", newColor);
 		psRenderer.material.shader = origShader;
+
 		InvokeRepeating("Set", 0f, reflashRate);
 		//StartCoroutine(reflash());
 		StartCoroutine(FadeInParticle());
@@ -255,8 +258,9 @@ public class ParticleEffectControl : MonoBehaviour {
 
 		int[] selectedID = new int[Count];
 		for (int i = 0; i < Count; i++)
+		{
 			selectedID[i] = meshID[Random.Range(0, meshID.Count)];
-
+		}
 
 		Vector3[] selectVecter3 = meshCtrl.GetMeshPoint(selectedID);
 		

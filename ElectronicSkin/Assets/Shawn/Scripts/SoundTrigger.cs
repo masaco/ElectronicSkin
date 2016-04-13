@@ -92,8 +92,9 @@ public class SoundTrigger : MonoBehaviour {
 					Vector3 newTransPoint = targetTrans.InverseTransformPoint ( transform.position );
 					float disToUp = upPoint.y - newTransPoint.y;
 					float disToDown = newTransPoint.y - downPoint.y;
-					float pitchValue = disToDown / (disToUp + disToDown)*3f;
-					pitchValue = Mathf.Clamp ( pitchValue, 0.4f, 3f );
+					float pitchValue = disToDown / (disToUp + disToDown)/3f;
+					pitchValue = Mathf.Clamp ( pitchValue, 0.6f, 3f );
+					Debug.Log ("pitchValue"+pitchValue);
 					audio.pitch = pitchCurve.Evaluate( pitchValue );
 				}
 
