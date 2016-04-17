@@ -14,7 +14,7 @@ public class ChangeScenes : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		Application.LoadLevelAsync("main");
+		if (other.tag.Contains ("CollisionBody")) Application.LoadLevelAsync("main");
 
 	}
 }

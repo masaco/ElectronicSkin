@@ -11,6 +11,7 @@ public class CamControl : MonoBehaviour {
 	private Camera cam;
 	void Start () {
 		cam = GetComponent<Camera> ();
+		Debug.Log(cam);
 	}
 
 	void Update () {

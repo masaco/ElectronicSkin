@@ -26,8 +26,8 @@ public class MQMapperItem : MonoBehaviour {
 	{
 		if( monitorTransform == null ) return;
 
-		if (monitorTransform.name.Contains ("hips"))
-			jsonRot = new Vector3 ( 0f, jsonRot.y, 0f );
+//		if (monitorTransform.name.Contains ("hips"))
+//			jsonRot = new Vector3 ( 0.0f, jsonRot.y,0.0f );
 
 		//Quaternion newRot = Quaternion.Euler( AxisAdjust ) * Quaternion.Euler( jsonRot ) * Quaternion.Euler( ModelAdjust );
 		Quaternion newRot = Quaternion.Euler( jsonRot );

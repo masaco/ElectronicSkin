@@ -8,6 +8,9 @@ public class IDManager : MonoBehaviour {
 
 	public GameObject[] Player;
 
+	public int colorIDP1;
+	public int colorIDP2;
+
 	private MQMapperManager roadSelfID;
 
 	private MainEffectControl colorControlPlayer;
@@ -27,16 +30,20 @@ public class IDManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		colorIDP1 = RabbitMQColorMapper.colorIDP1;
+		colorIDP2 = RabbitMQColorMapper.colorIDP2;
+//		Debug.Log("selfID = " +roadSelfID.selfID);
 		if(roadSelfID.selfID == 1)
 		{
-			colorControlPlayer.ChangeBody(RabbitMQColorMapper.colorIDP1);
-			if (Player.Length > 1)colorControlOtherP.ChangeBody(RabbitMQColorMapper.colorIDP2);
+			Debug.Log("ColorIDP1 = " +colorIDP1);
+			colorControlPlayer.ChangeBody(colorIDP1);
+
+			if (Player.Length > 1)colorControlOtherP.ChangeBody(colorIDP2);
 		}
 		else if (roadSelfID.selfID == 2)
 		{
-			colorControlPlayer.ChangeBody(RabbitMQColorMapper.colorIDP2);
-			if (Player.Length > 1)colorControlOtherP.ChangeBody(RabbitMQColorMapper.colorIDP1);
+			colorControlPlayer.ChangeBody(colorIDP2);
+			if (Player.Length > 1)colorControlOtherP.ChangeBody(colorIDP1);
 		}
 
 	

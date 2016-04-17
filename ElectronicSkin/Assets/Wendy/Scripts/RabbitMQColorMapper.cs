@@ -20,6 +20,8 @@ public class RabbitMQColorMapper : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		messages = new List<string>();
+		colorIDP1 = 0;
+		colorIDP2 = 0 ; 
 
 	}
 

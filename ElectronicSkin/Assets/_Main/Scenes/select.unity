@@ -115,7 +115,9 @@ MonoBehaviour:
   MQSelfID: {fileID: 155244155}
   MQColorID: {fileID: 1494425997}
   Player:
-  - {fileID: 945884231}
+  - {fileID: 1591988925}
+  colorIDP1: 0
+  colorIDP2: 0
 --- !u!4 &72855524
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ Prefab:
       objectReference: {fileID: 1238815475}
     - target: {fileID: 185564, guid: 044cbd7564234f14ab4460410c6e8fbf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 180368, guid: 044cbd7564234f14ab4460410c6e8fbf, type: 2}
       propertyPath: m_IsActive
@@ -210,6 +212,12 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 187966, guid: 044cbd7564234f14ab4460410c6e8fbf, type: 2}
   m_PrefabInternal: {fileID: 155244153}
+--- !u!114 &155244156 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11445486, guid: 044cbd7564234f14ab4460410c6e8fbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 155244153}
+  m_Script: {fileID: 11500000, guid: 95e701525cedb4d01b17a442eabbd558, type: 3}
 --- !u!4 &283163458 stripped
 Transform:
   m_PrefabParentObject: {fileID: 461690, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
@@ -3472,7 +3480,7 @@ MonoBehaviour:
   fadeDirLight: {fileID: 1877822335}
   fadeMirrorMat: {fileID: 1138116489}
   fadeSceneMat: {fileID: 1995469780}
-  roadSelfID: {fileID: 0}
+  roadSelfID: {fileID: 155244156}
 --- !u!54 &945884234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5271,67 +5279,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 121472, guid: 044cbd7564234f14ab4460410c6e8fbf, type: 2}
   m_PrefabInternal: {fileID: 155244153}
---- !u!1 &1398347290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1398347292}
-  - 108: {fileID: 1398347291}
-  m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1398347291
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1398347290}
-  m_Enabled: 1
-  serializedVersion: 6
-  m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_BounceIntensity: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
---- !u!4 &1398347292
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1398347290}
-  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
-  m_LocalPosition: {x: 0.06356005, y: 1.7911235, z: 2.2142007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1001 &1422994087
 Prefab:
   m_ObjectHideFlags: 0
