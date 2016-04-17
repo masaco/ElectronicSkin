@@ -16,6 +16,8 @@ public class SelectBody : MonoBehaviour {
 	public MeshRenderer fadeMirrorMat;
 	public MeshRenderer fadeSceneMat;
 
+	public MQMapperManager roadSelfID;
+
 //	private Animator animator;
 	private Vector3 StartPos;
 	private Vector3 StartRot;
@@ -194,6 +196,7 @@ public class SelectBody : MonoBehaviour {
 		isFadeSwitch = true;
 		yield return Fade( -1 );
 		SwitchBody(state);
+
 		yield return new WaitForSeconds(0.3f);
 		foreach (ParticleSystem ps in SelectBtnsParticle) {
 			ps.emissionRate = 500f;
@@ -210,6 +213,11 @@ public class SelectBody : MonoBehaviour {
 		SelectBtnsParticle [0].startColor = btnColor [GetNum(bodyID-1)];
 		SelectBtnsParticle [1].startColor = btnColor [GetNum(bodyID+1)];
 		SelectBtnsParticle [2].startColor = btnColor [bodyID];
+
+
+		if (roadSelfID.selfID == 1)RabbitMQColorMapper.colorIDP1 = GetNum(bodyID);
+		else if (roadSelfID.selfID == 2)RabbitMQColorMapper.colorIDP2 = GetNum(bodyID);
+		Debug.Log("getnum : " + bodyID);
 
 		Body.SendMessage ("ChangeBody", GetNum(bodyID), SendMessageOptions.DontRequireReceiver);
 		Body.SendMessage("ReInit", SendMessageOptions.DontRequireReceiver);

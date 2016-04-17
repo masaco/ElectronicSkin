@@ -6,8 +6,8 @@ using SimpleJSON;
 
 public class RabbitMQColorMapper : MonoBehaviour {
 
-	public int colorIDP1 = 0;
-	public int colorIDP2 = 0;
+	public static int colorIDP1 = 0;
+	public static int colorIDP2 = 0;
 
 
 	public RabbitMQServer rabbitServer;
@@ -20,6 +20,8 @@ public class RabbitMQColorMapper : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		messages = new List<string>();
+		colorIDP1 = 0;
+		colorIDP2 = 0 ; 
 
 	}
 

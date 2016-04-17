@@ -103,7 +103,7 @@ public class ColliderManager : MonoBehaviour {
 
 //			Debug.Log("touchPart:"+touchPart[1]);
 			string actionData;
-			actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":0,\"times\":1}}}}}]";
+			actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":500,\"times\":1}}}}}]";
 			sender.SendMessageToServer(actionData);
 			vibrateTimer = vibrateInterval * 0.001f; //轉成毫秒
 //			Debug.Log(actionData);
