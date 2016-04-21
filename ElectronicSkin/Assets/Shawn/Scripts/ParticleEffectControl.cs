@@ -273,6 +273,9 @@ public class ParticleEffectControl : MonoBehaviour {
 			{				
 				particle[i + lastCount].position = meshCtrl.SkinMesh.transform.TransformPoint(selectVecter3[i])
 				+ new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * blurRate;
+				if ( meshCtrl.isPlayer )
+					if ( meshCtrl.HeadBox.bounds.Contains(particle[i + lastCount].position) )
+						continue;
 			}				
 			else
 				particle[i + lastCount].position = meshCtrl.BodyMesh.transform.TransformPoint(selectVecter3[i])

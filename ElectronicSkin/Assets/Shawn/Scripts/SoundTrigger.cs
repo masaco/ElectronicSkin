@@ -46,23 +46,23 @@ public class SoundTrigger : MonoBehaviour {
 				if (!audio.isPlaying) {
 					audio.Play ();
 				}
-				audioTimer = 0.5f;
+				audioTimer = 0.25f;
 				target = other.transform;
 
-				Vector3 whichSide = Vector3.zero;
+//				Vector3 whichSide = Vector3.zero;
 				Transform targetTrans = other.transform;
 				if (target != preTarget)
 				{
 					targetCol = target.GetComponent<BoxCollider> ();
 
 
-					Vector3 [] dir = { targetTrans.right*targetTrans.lossyScale.x, targetTrans.up*targetTrans.lossyScale.y, targetTrans.forward*targetTrans.lossyScale.z };
-
-					whichSide = (targetTrans.lossyScale.x >= targetTrans.lossyScale.y) ? dir[0] : dir[1];
-					if ( whichSide == dir[0] )
-						whichSide = (targetTrans.lossyScale.x >= targetTrans.lossyScale.z) ? dir[0] : dir[2];
-					else
-						whichSide = (targetTrans.lossyScale.y >= targetTrans.lossyScale.z) ? dir[1] : dir[2];
+//					Vector3 [] dir = { targetTrans.right*targetTrans.lossyScale.x, targetTrans.up*targetTrans.lossyScale.y, targetTrans.forward*targetTrans.lossyScale.z };
+//
+//					whichSide = (targetTrans.lossyScale.x >= targetTrans.lossyScale.y) ? dir[0] : dir[1];
+//					if ( whichSide == dir[0] )
+//						whichSide = (targetTrans.lossyScale.x >= targetTrans.lossyScale.z) ? dir[0] : dir[2];
+//					else
+//						whichSide = (targetTrans.lossyScale.y >= targetTrans.lossyScale.z) ? dir[1] : dir[2];
 				}
 				else 
 				{
@@ -84,18 +84,25 @@ public class SoundTrigger : MonoBehaviour {
 							}
 						}
 					}
-					float depthTestingValue = (float)depths/((float)Sum/2f);
+					float depthTestingValue = (float)depths/((float)Sum);
 					audio.volume = Mathf.Clamp01( depthTestingValue );
+//					Debug.Log ("volumeValue"+audio.volume + " name：" + other.name);
+//					Vector3 upPoint = targetTrans.localPosition + targetTrans.localScale.y / 2f * transform.up;
+//					Vector3 downPoint = targetTrans.localPosition - targetTrans.localScale.y / 2f * transform.up;
+//					Vector3 newTransPoint = targetTrans.InverseTransformPoint ( transform.position );
+//					float disToUp = upPoint.y - newTransPoint.y;
+//					float disToDown = newTransPoint.y - downPoint.y;
+//					float pitchValue = Mathf.Abs( disToDown ) / Mathf.Abs(upPoint.y + downPoint.y);
 
-					Vector3 upPoint = targetTrans.localPosition + targetTrans.localScale.y / 4f * transform.up;
-					Vector3 downPoint = targetTrans.localPosition - targetTrans.localScale.y / 4f * transform.up;
-					Vector3 newTransPoint = targetTrans.InverseTransformPoint ( transform.position );
-					float disToUp = upPoint.y - newTransPoint.y;
-					float disToDown = newTransPoint.y - downPoint.y;
-					float pitchValue = disToDown / (disToUp + disToDown)/3f;
-					pitchValue = Mathf.Clamp ( pitchValue, 0.6f, 3f );
-					Debug.Log ("pitchValue"+pitchValue);
+					float highest = 1.8f;
+					float lowest = 0.3f;
+					float range = highest - lowest;
+					float newY = transform.position.y - lowest;
+
+					float pitchValue = Mathf.Clamp(newY, 0, range) / range * 3f;
+					pitchValue = Mathf.Clamp ( pitchValue, 0f, 3f );
 					audio.pitch = pitchCurve.Evaluate( pitchValue );
+//					Debug.Log ("pitchValue"+audio.pitch + " name：" + other.name );
 				}
 
 				preTarget = other.transform;
@@ -127,7 +134,7 @@ public class SoundTrigger : MonoBehaviour {
 		{
 			audio.Pause ();
 			audio.volume = 0f;
-			audio.pitch = 0.4f;
+			audio.pitch = 0.3f;
 		}
 	}
 

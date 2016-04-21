@@ -6,13 +6,12 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Orange
-  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_Name: Wall 1
+  m_Shader: {fileID: 4800000, guid: b3240f456eebcdf4c8d1ff88592bb71e, type: 3}
+  m_ShaderKeywords: _EMISSION _NORMALMAP _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: 2450
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -20,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Texture: {fileID: 2800000, guid: 5a11645cedaf3f14c829deb722aa44ba, type: 3}
+          m_Scale: {x: 0.667, y: 0.667}
+          m_Offset: {x: -0.47, y: 0.13034}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 4f713790195a5084481c6b7f67fb0da5, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -41,7 +40,7 @@ Material:
         first:
           name: _ParallaxMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: b1ff8fa95a8af4f4094657ff459d08ee, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -56,8 +55,8 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Scale: {x: 0.667, y: 0.667}
+          m_Offset: {x: -0.47, y: 0.13034}
       data:
         first:
           name: _DetailMask
@@ -81,16 +80,44 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
+          name: _MainTexture
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 5a11645cedaf3f14c829deb722aa44ba, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _EffectTexture
+          name: _RingLeftTexture
         second:
-          m_Texture: {fileID: 2800000, guid: 82e0bb45501a9cf41a574dfe56ba2b7f, type: 3}
+          m_Texture: {fileID: 2800000, guid: e49fd0b4279e3d441af485ecbf83191a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RingRightTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: e49fd0b4279e3d441af485ecbf83191a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _main
+        second:
+          m_Texture: {fileID: 2800000, guid: 5a11645cedaf3f14c829deb722aa44ba, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _normal
+        second:
+          m_Texture: {fileID: 2800000, guid: 4f713790195a5084481c6b7f67fb0da5, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_9620
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -101,27 +128,23 @@ Material:
       data:
         first:
           name: _DstBlend
-        second: 10
+        second: 0
       data:
         first:
           name: _Cutoff
         second: 0.5
       data:
         first:
-          name: _Shininess
-        second: 0.1
-      data:
-        first:
           name: _Parallax
-        second: 0.02
+        second: 0.08
       data:
         first:
           name: _ZWrite
-        second: 0
+        second: 1
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.06
       data:
         first:
           name: _BumpScale
@@ -141,57 +164,45 @@ Material:
       data:
         first:
           name: _Mode
-        second: 3
+        second: 0
       data:
         first:
           name: _Metallic
         second: 0
       data:
         first:
-          name: _InvFade
-        second: 0.01
+          name: _VerticalRingSpeed
+        second: 0.759
       data:
         first:
-          name: _Emission
-        second: 1
+          name: _Glow
+        second: 0
       data:
         first:
-          name: _Speed
-        second: 0.823
+          name: _RingSpeed
+        second: 0.066
+      data:
+        first:
+          name: _Gloss
+        second: 0.8
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 0.044, g: 0.044, b: 0.044, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 0.97794116, g: 0.54907525, b: 0.31639275, a: 0.434}
-      data:
-        first:
-          name: _SpecColor
-        second: {r: 0.1397059, g: 0.1397059, b: 0.1397059, a: 1}
-      data:
-        first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 0.5, g: 0.68965507, b: 1, a: 1}
-      data:
-        first:
-          name: _EmisColor
-        second: {r: 0.2, g: 0.2, b: 0.2, a: 0}
-      data:
-        first:
-          name: _MainColor
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _EffectColor1
-        second: {r: 0.125, g: 0.3120689, b: 1, a: 1}
+          name: _VerticalRingColor
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
-          name: _EffectColor2
-        second: {r: 0, g: 0.8014706, b: 0.2376775, a: 1}
+          name: _RingLeftColor
+        second: {r: 0.042171277, g: 0.11489975, b: 0.38235295, a: 1}
+      data:
+        first:
+          name: _RingRightColor
+        second: {r: 0.050894953, g: 0.2794118, b: 0.020544987, a: 1}

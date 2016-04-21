@@ -53,7 +53,7 @@ public class MainEffectControl : MonoBehaviour {
 	private bool isReInit;
 
 	public AnimationCurve SFXCurve;
-	public AudioClip SFXClip;
+	public AudioClip[] SFXClip;
 	private CharacterColor preColor;
 	#endregion
 
@@ -62,7 +62,8 @@ public class MainEffectControl : MonoBehaviour {
 
 		if (!isPlayer)
 		{
-			GetComponentInChildren<SZVRDevice>().gameObject.SetActive(false);
+			if ( GetComponentInChildren<SZVRDevice>() )
+				GetComponentInChildren<SZVRDevice>().gameObject.SetActive(false);
 		}
 
 
@@ -107,15 +108,21 @@ public class MainEffectControl : MonoBehaviour {
 					case "RightHand": 
 						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightHand).transform;
 						peCtrl.transform.localEulerAngles += Vector3.forward*180f;
-//						soundTrigger = peCtrl.gameObject.AddComponent<SoundTrigger>();
-//						soundTrigger.Init( SFXClip,SFXCurve, ID.ToString());
+						soundTrigger = peCtrl.gameObject.AddComponent<SoundTrigger>();
+						soundTrigger.Init( SFXClip[Random.Range( 0, SFXClip.Length )],SFXCurve, ID.ToString());
 						break;
-					case "LeftUpperArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform; peCtrl.name = "leftForeArm"; break;
-					case "LeftLowerArm": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; peCtrl.name = "leftArm"; break;
+					case "LeftUpperArm": 
+						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform;
+						peCtrl.name = "leftForeArm"; 
+						break;
+					case "LeftLowerArm": 
+						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; 
+						peCtrl.name = "leftArm"; 
+						break;
 					case "LeftHand": 
 						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftHand).transform;
-//						soundTrigger = peCtrl.gameObject.AddComponent<SoundTrigger>();
-//						soundTrigger.Init( SFXClip,SFXCurve, ID.ToString());
+						soundTrigger = peCtrl.gameObject.AddComponent<SoundTrigger>();
+						soundTrigger.Init( SFXClip[Random.Range( 0, SFXClip.Length )],SFXCurve, ID.ToString());
 						break;
 					case "RightUpperLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).transform; peCtrl.name = "rightUpLeg"; break;
 					case "RightLowerLeg": peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.RightLowerLeg).transform; peCtrl.name = "rightLeg";break;
@@ -209,6 +216,7 @@ public class MainEffectControl : MonoBehaviour {
 		SkinMesh.materials = tempMat;
 		foreach (ParticleEffectControl pCtrls in particleCtrls)
 			pCtrls.ChangeColor ();
+		
 	}
 
 	void Set()
@@ -227,7 +235,7 @@ public class MainEffectControl : MonoBehaviour {
 
 		for( int i = 0; i < meshID.Length; i++ )
 		{
-			tempV3array[i] = meshPointPosition[meshID[i]];
+			tempV3array [i] = meshPointPosition [meshID [i]];
         }
 		return tempV3array;
     }
