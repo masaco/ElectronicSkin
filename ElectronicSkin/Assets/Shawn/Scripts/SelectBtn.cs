@@ -3,11 +3,13 @@ using System.Collections;
 
 public class SelectBtn : MonoBehaviour {
 	public int num = 1;
+	public GameObject GO;
 	void OnTriggerEnter(Collider other)
 	{
 		
 		if (other.tag.Contains ("CollisionBody") ) {
-			transform.root.SendMessage("BtnDown", num, SendMessageOptions.DontRequireReceiver );
+			GO.SendMessage("BtnDown", num, SendMessageOptions.DontRequireReceiver );
+			Debug.Log("is trigger");
 		}
 
 	}

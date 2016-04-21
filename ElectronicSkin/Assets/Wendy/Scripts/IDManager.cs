@@ -24,7 +24,7 @@ public class IDManager : MonoBehaviour {
 		roadSelfID = MQSelfID.GetComponent<MQMapperManager>();
 
 		colorControlPlayer = Player[0].GetComponent<MainEffectControl>();
-		if (Player.Length > 1)colorControlOtherP = Player[1].GetComponent<MainEffectControl>();
+		if (Player.Length >= 1)colorControlOtherP = Player[1].GetComponent<MainEffectControl>();
 
 	}
 	
@@ -32,6 +32,7 @@ public class IDManager : MonoBehaviour {
 	void Update () {
 		colorIDP1 = RabbitMQColorMapper.colorIDP1;
 		colorIDP2 = RabbitMQColorMapper.colorIDP2;
+
 //		Debug.Log("selfID = " +roadSelfID.selfID);
 		if(roadSelfID.selfID == 1)
 		{

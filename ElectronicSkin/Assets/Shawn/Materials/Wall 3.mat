@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Wall
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Wall 3
+  m_Shader: {fileID: 4800000, guid: 5490e2695d9241044a141a2940e9c374, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -26,9 +26,9 @@ Material:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Texture: {fileID: 2800000, guid: 4f713790195a5084481c6b7f67fb0da5, type: 3}
+          m_Scale: {x: 0.667, y: 0.667}
+          m_Offset: {x: -0.47, y: 0.13034}
       data:
         first:
           name: _DetailNormalMap
@@ -80,9 +80,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _EffectTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 82e0bb45501a9cf41a574dfe56ba2b7f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _MainTexture
         second:
-          m_Texture: {fileID: 2800000, guid: 5a11645cedaf3f14c829deb722aa44ba, type: 3}
+          m_Texture: {fileID: 2800000, guid: 82e0bb45501a9cf41a574dfe56ba2b7f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -118,6 +125,20 @@ Material:
           name: _node_9620
         second:
           m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: 5a11645cedaf3f14c829deb722aa44ba, type: 3}
+          m_Scale: {x: 0.667, y: 0.667}
+          m_Offset: {x: -0.47, y: 0.13034}
+      data:
+        first:
+          name: _Effect
+        second:
+          m_Texture: {fileID: 2800000, guid: 82e0bb45501a9cf41a574dfe56ba2b7f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -171,6 +192,14 @@ Material:
         second: 0
       data:
         first:
+          name: _Emission
+        second: 0
+      data:
+        first:
+          name: _Speed
+        second: 1.32
+      data:
+        first:
           name: _VerticalRingSpeed
         second: 0.759
       data:
@@ -184,7 +213,11 @@ Material:
       data:
         first:
           name: _Gloss
-        second: 0.8
+        second: 0
+      data:
+        first:
+          name: _EffectLerp
+        second: 0.566
     m_Colors:
       data:
         first:
@@ -194,6 +227,22 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
+      data:
+        first:
+          name: _MainColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _EffectColor1
+        second: {r: 0.004433395, g: 0.13239019, b: 0.60294116, a: 1}
+      data:
+        first:
+          name: _EffectColor2
+        second: {r: 0, g: 0.4852941, b: 0.14391479, a: 1}
       data:
         first:
           name: _VerticalRingColor
@@ -206,3 +255,15 @@ Material:
         first:
           name: _RingRightColor
         second: {r: 0.050894953, g: 0.2794118, b: 0.020544987, a: 1}
+      data:
+        first:
+          name: _Color_copy
+        second: {r: 0, g: 0.8014706, b: 0.2376775, a: 1}
+      data:
+        first:
+          name: _EffectColor
+        second: {r: 0.0017841712, g: 0.24264705, b: 0.08107457, a: 1}
+      data:
+        first:
+          name: _EffectColor_copy
+        second: {r: 0.01995026, g: 0.116156444, b: 0.30147058, a: 1}

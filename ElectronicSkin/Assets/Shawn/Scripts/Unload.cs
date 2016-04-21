@@ -5,7 +5,7 @@ public class Unload : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("UnloadResources", 25f, 25f);
+		InvokeRepeating("UnloadResources", 15f, 15f);
 	}
 	
 	void UnloadResources()

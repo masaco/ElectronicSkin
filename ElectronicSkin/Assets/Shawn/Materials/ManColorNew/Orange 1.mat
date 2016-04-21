@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Orange
-  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Orange 1
+  m_Shader: {fileID: 4800000, guid: 00953742d4c0bc14aa9ae198c89c6c43, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -157,7 +157,11 @@ Material:
       data:
         first:
           name: _Speed
-        second: 0.823
+        second: 0.092
+      data:
+        first:
+          name: _LerpValue
+        second: 0.383
     m_Colors:
       data:
         first:
@@ -186,7 +190,7 @@ Material:
       data:
         first:
           name: _MainColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.24264705, g: 0.09538538, b: 0, a: 0.347}
       data:
         first:
           name: _EffectColor1

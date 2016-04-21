@@ -266,6 +266,8 @@ public class ParticleEffectControl : MonoBehaviour {
 		
 		#endregion
 
+//		Debug.Log("lastCount:"+lastCount);
+
 		for (int i = 0; i < Count; i++)
 		{
 			#region CreateParticle & SetColor
@@ -273,6 +275,9 @@ public class ParticleEffectControl : MonoBehaviour {
 			{				
 				particle[i + lastCount].position = meshCtrl.SkinMesh.transform.TransformPoint(selectVecter3[i])
 				+ new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * blurRate;
+				if ( meshCtrl.isPlayer )
+					if ( meshCtrl.HeadBox.bounds.Contains(particle[i + lastCount].position) )
+						continue;
 			}				
 			else
 				particle[i + lastCount].position = meshCtrl.BodyMesh.transform.TransformPoint(selectVecter3[i])
@@ -352,7 +357,7 @@ public class ParticleEffectControl : MonoBehaviour {
 			particle[i + lastCount].velocity += Vector3.up*0.02f;
 		}
 
-		ps.SetParticles(particle, ps.particleCount);
+		ps.SetParticles(particle, Count);
 	}	
 
 	#region Calculate Impulse

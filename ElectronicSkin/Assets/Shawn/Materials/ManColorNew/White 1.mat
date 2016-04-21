@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Orange
-  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
+  m_Name: White 1
+  m_Shader: {fileID: 4800000, guid: 00953742d4c0bc14aa9ae198c89c6c43, type: 3}
+  m_ShaderKeywords: _ALPHABLEND_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
   stringTagMap:
@@ -97,7 +97,7 @@ Material:
       data:
         first:
           name: _SrcBlend
-        second: 1
+        second: 5
       data:
         first:
           name: _DstBlend
@@ -121,7 +121,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -141,7 +141,7 @@ Material:
       data:
         first:
           name: _Mode
-        second: 3
+        second: 2
       data:
         first:
           name: _Metallic
@@ -157,16 +157,20 @@ Material:
       data:
         first:
           name: _Speed
-        second: 0.823
+        second: 0.092
+      data:
+        first:
+          name: _LerpValue
+        second: 0.859
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 0.97794116, g: 0.54907525, b: 0.31639275, a: 0.434}
+        second: {r: 1, g: 1, b: 1, a: 0.434}
       data:
         first:
           name: _SpecColor
@@ -186,12 +190,4 @@ Material:
       data:
         first:
           name: _MainColor
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _EffectColor1
-        second: {r: 0.125, g: 0.3120689, b: 1, a: 1}
-      data:
-        first:
-          name: _EffectColor2
-        second: {r: 0, g: 0.8014706, b: 0.2376775, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 0.378}
