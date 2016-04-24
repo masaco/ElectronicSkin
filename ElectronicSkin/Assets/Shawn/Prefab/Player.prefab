@@ -1670,7 +1670,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180928}
-  m_LocalRotation: {x: 0, y: -0.99896127, z: 0, w: -0.045568135}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0.33017492, y: 0.05, z: 2.7554817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2620,6 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 0
+  GO: {fileID: 0}
 --- !u!114 &11412658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2687,7 +2688,6 @@ MonoBehaviour:
     m_RotationOrder: 0
   SFXClip:
   - {fileID: 8300000, guid: 449091a2b5ccb674889b2344be8af5c8, type: 3}
-  - {fileID: 8300000, guid: 13c1ee27d83ae0549a6e7c890c07e9d3, type: 3}
   - {fileID: 8300000, guid: 54fa03ca23d3a1c4a9c4beeaa917766d, type: 3}
 --- !u!114 &11421466
 MonoBehaviour:
@@ -2870,6 +2870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 0
+  GO: {fileID: 0}
 --- !u!114 &11465816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2895,6 +2896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: -1
+  GO: {fileID: 0}
 --- !u!114 &11469540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2989,6 +2991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 1
+  GO: {fileID: 0}
 --- !u!114 &11494230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3058,7 +3061,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.31
+  m_Radius: 1.57
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13542018
 SphereCollider:
@@ -3070,7 +3073,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.31
+  m_Radius: 1.57
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13551134
 SphereCollider:
@@ -3082,7 +3085,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.31
+  m_Radius: 1.57
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13593370
 SphereCollider:
@@ -3094,7 +3097,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.31
+  m_Radius: 1.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13772112
 SkinnedMeshRenderer:

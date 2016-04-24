@@ -245,6 +245,10 @@ Material:
         second: {r: 0, g: 0.4852941, b: 0.14391479, a: 1}
       data:
         first:
+          name: _EffectColor
+        second: {r: 0.0017841712, g: 0.24264705, b: 0.08107457, a: 1}
+      data:
+        first:
           name: _VerticalRingColor
         second: {r: 0, g: 0, b: 0, a: 1}
       data:
@@ -259,10 +263,6 @@ Material:
         first:
           name: _Color_copy
         second: {r: 0, g: 0.8014706, b: 0.2376775, a: 1}
-      data:
-        first:
-          name: _EffectColor
-        second: {r: 0.0017841712, g: 0.24264705, b: 0.08107457, a: 1}
       data:
         first:
           name: _EffectColor_copy
