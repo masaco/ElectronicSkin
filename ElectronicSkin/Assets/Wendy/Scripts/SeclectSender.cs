@@ -29,6 +29,15 @@ public class SeclectSender : MonoBehaviour {
   				"colorID":"1"
 		 	}
 		 */
+		if(selfID == "1")
+		{
+			ColorDataSender(RabbitMQColorMapper.colorIDP1);
+		}
+		else if(selfID == "2" )
+		{
+			ColorDataSender(RabbitMQColorMapper.colorIDP2);
+		}
+
 
 	}
 
@@ -39,6 +48,8 @@ public class SeclectSender : MonoBehaviour {
 		string colorData;
 		colorData = "{\"id\":\""+ selfID + "\",\"colorID\":\"" + colorID +"\"}";
 		sender.SendMessageToServer(colorData);
+
+		Debug.Log("colorData = " + colorData );
 	}
 		
 

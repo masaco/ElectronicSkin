@@ -9,6 +9,9 @@ public class RabbitMQColorMapper : MonoBehaviour {
 	public static int colorIDP1 = 0;
 	public static int colorIDP2 = 0;
 
+	private string selfID;
+
+	public GameObject roadIDObj;
 
 	public RabbitMQServer rabbitServer;
 
@@ -23,6 +26,8 @@ public class RabbitMQColorMapper : MonoBehaviour {
 		colorIDP1 = 0;
 		colorIDP2 = 0 ; 
 
+		MQMapperManager roadID = roadIDObj.GetComponent<MQMapperManager>();
+		selfID = roadID.selfID.ToString();	
 	}
 
 	// Update is called once per frame
@@ -37,7 +42,7 @@ public class RabbitMQColorMapper : MonoBehaviour {
 			string msg = messages[0];
 			messages.RemoveAt(0);
 			LoadJsonRots( msg );
-			//			Debug.Log (msg.ToString());
+//			Debug.Log ("color msg = "+msg.ToString());
 		}
 	}
 
@@ -48,7 +53,7 @@ public class RabbitMQColorMapper : MonoBehaviour {
 		JSONNode nodesAll = JSON.Parse( jsonString );
 
 		//format: {"id":"1"//1~2,"color":"0" //0~6}
-
+//		Debug.Log ("nodesAll[id] = "+nodesAll["id"].ToString());
 
 		// if convert failed : not json format
 		if( nodesAll == null)
@@ -57,14 +62,16 @@ public class RabbitMQColorMapper : MonoBehaviour {
 			return;
 		}
 			
-		if (nodesAll["id"].AsInt == 1)
+		if (nodesAll["id"].AsInt == 1 && int.Parse(selfID) == 2)
 		{
 			colorIDP1 = nodesAll["color"].AsInt;
+//			Debug.Log ("colorIDP1 = "+colorIDP1.ToString());
 		}
 
-		else if (nodesAll["id"].AsInt == 2)
+		else if (nodesAll["id"].AsInt == 2 && int.Parse(selfID) == 1)
 		{
 			colorIDP2 = nodesAll["color"].AsInt;
+//			Debug.Log ("colorIDP2 = "+colorIDP2.ToString());
 		}
 		else
 		{
