@@ -46,7 +46,7 @@ public class SeclectSender : MonoBehaviour {
 		if (roadIDObj == null) return;
 
 		string colorData;
-		colorData = "{\"id\":\""+ selfID + "\",\"colorID\":\"" + colorID +"\"}";
+		colorData = "{\"id\":\""+ selfID + "\",\"color\":\"" + colorID +"\"}";
 		sender.SendMessageToServer(colorData);
 
 		Debug.Log("colorData = " + colorData );

@@ -92,7 +92,7 @@ public class ColliderManager : MonoBehaviour {
 			return;
 		}
 
-		if (target.tag == "CollisionBody")
+		if (target.tag == "CollisionBody" || target.tag == "CollisionObj" )
 		{
 //			if ( vibrateTimer > 0f ) return;
 
