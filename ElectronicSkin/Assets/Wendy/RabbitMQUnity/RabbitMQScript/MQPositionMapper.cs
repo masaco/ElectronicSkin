@@ -93,7 +93,7 @@ public class MQPositionMapper : MonoBehaviour {
 			messages.RemoveAt(0);
 			LoadJsonPos( msg );
 
-//			Debug.Log (msg);
+			Debug.Log (msg);
 			
 			// 限制每個 frame 最多讀取幾筆資料
 			// 防止一個 frame 裡面有太多比資料，造成程式 lag

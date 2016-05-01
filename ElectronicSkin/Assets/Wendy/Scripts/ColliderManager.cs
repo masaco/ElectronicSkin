@@ -14,7 +14,7 @@ public class ColliderManager : MonoBehaviour {
 	[System.NonSerialized]
 	public string colliderID;
 
-	private float vibrateInterval = 50f;
+	private float vibrateInterval = 200f;
 	private float vibrateTimer = 0f;
 	private bool isReady;
 

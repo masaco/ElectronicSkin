@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.100
+  serverIp: 192.168.1.149
   topicName: wise.mocap.color
 --- !u!114 &75435622
 MonoBehaviour:
@@ -391,7 +391,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 142167851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -2415,7 +2415,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 391003432}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -4025,6 +4025,7 @@ MonoBehaviour:
   nearClipPlane: 0.03
   farClipPlane: 1000
   followTarget: {fileID: 1517934257}
+  headpos: {fileID: 0}
   eyeToNeckHeight: 0
 --- !u!1 &413509231
 GameObject:
@@ -4247,7 +4248,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 486909056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -5852,7 +5853,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 500639606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -7663,7 +7664,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 635100140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -9368,7 +9369,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 696853919}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -11035,7 +11036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.100
+  serverIp: 192.168.1.149
   topicName: wise.mocap.pose
 --- !u!114 &749677945
 MonoBehaviour:
@@ -11495,7 +11496,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 864437280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -13158,7 +13159,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 895242411}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -14998,7 +14999,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946396418}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -16623,7 +16624,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012761320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -18313,7 +18314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.100
+  serverIp: 192.168.1.149
   topicName: wise.mocap.position
 --- !u!114 &1098041986
 MonoBehaviour:
@@ -19087,9 +19088,21 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11481988, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: followTarget
+      value: 
+      objectReference: {fileID: 1591988926}
+    - target: {fileID: 11481988, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: headpos
+      value: 
+      objectReference: {fileID: 1198466320}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1198466320 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 476172, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+  m_PrefabInternal: {fileID: 1198466319}
 --- !u!1 &1200410203
 GameObject:
   m_ObjectHideFlags: 0
@@ -21374,7 +21387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09a5dc4800304d7aab8aef18dbaebc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverIP: 192.168.1.100
+  serverIP: 192.168.1.149
   channelName: wise.mocap.color
   serverAutoStart: 1
 --- !u!114 &1901779091
@@ -21430,7 +21443,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1910861740}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -23069,7 +23082,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939258324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -24777,7 +24790,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408666, guid: ec15851cd186d6841b08646c10991ca3, type: 2}
       propertyPath: serverIP
-      value: 192.168.1.100
+      value: 192.168.1.149
       objectReference: {fileID: 0}
     - target: {fileID: 11408666, guid: ec15851cd186d6841b08646c10991ca3, type: 2}
       propertyPath: m_Enabled
@@ -24864,7 +24877,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1998471484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -26512,7 +26525,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2060701309}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -28210,7 +28223,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073026675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 
@@ -29817,7 +29830,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2134996744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03cb2aa75ad7c26418e67c7bc1e4caf1, type: 3}
   m_Name: 

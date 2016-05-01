@@ -62,21 +62,24 @@ public class RabbitMQColorMapper : MonoBehaviour {
 			return;
 		}
 			
-		if (nodesAll["id"].AsInt == 1 && int.Parse(selfID) == 2)
+		if (nodesAll["id"].AsInt == 1 && selfID == "2")
 		{
 			colorIDP1 = nodesAll["color"].AsInt;
 //			Debug.Log ("colorIDP1 = "+colorIDP1.ToString());
 		}
 
-		else if (nodesAll["id"].AsInt == 2 && int.Parse(selfID) == 1)
+		else if (nodesAll["id"].AsInt == 2 && selfID == "1")
 		{
 			colorIDP2 = nodesAll["color"].AsInt;
 //			Debug.Log ("colorIDP2 = "+colorIDP2.ToString());
 		}
-		else
+
+		else if (selfID == "3")
 		{
-			Debug.LogError("colorID userID 格式不正確");
+			colorIDP1 = nodesAll["color"].AsInt;
+			colorIDP2 = nodesAll["color"].AsInt;
 		}
+
 
 	}
 

@@ -25,6 +25,7 @@ public class SZVRDevice : MonoBehaviour
 	public static Quaternion direction = Quaternion.identity;
 
 	public Transform followTarget;
+	public Transform headpos;
 	public float eyeToNeckHeight;
 
 	private SZVRCanvas canvas;
@@ -110,7 +111,10 @@ public class SZVRDevice : MonoBehaviour
 			Quaternion cameraOrientation = DeviceInterface.GetCameraOrientation();
 
 			if(followTarget != null)
+			{
+				transform.position = headpos.position;
 				direction = followTarget.rotation * orentationOffset * cameraOrientation;
+			}
 			else
 				direction = orentationOffset * cameraOrientation;
 

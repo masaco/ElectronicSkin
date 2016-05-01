@@ -34,9 +34,9 @@ public class IDManager : MonoBehaviour {
 		colorIDP2 = RabbitMQColorMapper.colorIDP2;
 
 //		Debug.Log("selfID = " +roadSelfID.selfID);
-		if(roadSelfID.selfID == 1)
+		if(roadSelfID.selfID == 1 || roadSelfID.selfID == 3)
 		{
-			Debug.Log("ColorIDP1 = " +colorIDP1);
+//			Debug.Log("ColorIDP1 = " +colorIDP1);
 			colorControlPlayer.ChangeBody(colorIDP1);
 
 			if (Player.Length > 1)colorControlOtherP.ChangeBody(colorIDP2);

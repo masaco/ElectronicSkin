@@ -49,7 +49,7 @@ public class SeclectSender : MonoBehaviour {
 		colorData = "{\"id\":\""+ selfID + "\",\"color\":\"" + colorID +"\"}";
 		sender.SendMessageToServer(colorData);
 
-		Debug.Log("colorData = " + colorData );
+//		Debug.Log("colorData = " + colorData );
 	}
 		
 

@@ -189,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &53554001
 Transform:
   m_ObjectHideFlags: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.100
+  serverIp: 192.168.1.149
   topicName: wise.mocap.color
 --- !u!114 &75435622
 MonoBehaviour:
@@ -4197,6 +4197,7 @@ MonoBehaviour:
   nearClipPlane: 0.03
   farClipPlane: 1000
   followTarget: {fileID: 1517934257}
+  headpos: {fileID: 0}
   eyeToNeckHeight: 0
 --- !u!1 &413509231
 GameObject:
@@ -11207,7 +11208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.100
+  serverIp: 192.168.1.149
   topicName: wise.mocap.pose
 --- !u!114 &749677945
 MonoBehaviour:
@@ -18455,7 +18456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1083335847
 Transform:
   m_ObjectHideFlags: 0
@@ -18571,7 +18572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.100
+  serverIp: 192.168.1.149
   topicName: wise.mocap.position
 --- !u!114 &1098041986
 MonoBehaviour:
@@ -21685,7 +21686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1901779089
 Transform:
   m_ObjectHideFlags: 0
@@ -25074,7 +25075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1951926388
 Transform:
   m_ObjectHideFlags: 0
@@ -25191,7 +25192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 197010, guid: ec15851cd186d6841b08646c10991ca3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11408666, guid: ec15851cd186d6841b08646c10991ca3, type: 2}
       propertyPath: serverAutoStart
@@ -28613,7 +28614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428760, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.77406
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 428760, guid: 335ef0a3a063c034a841c042d31fb15b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -30299,7 +30300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2126104068
 Transform:
   m_ObjectHideFlags: 0
@@ -31911,7 +31912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2140279211
 Transform:
   m_ObjectHideFlags: 0
