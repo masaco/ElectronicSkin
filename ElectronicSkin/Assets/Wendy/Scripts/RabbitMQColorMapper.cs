@@ -42,7 +42,7 @@ public class RabbitMQColorMapper : MonoBehaviour {
 			string msg = messages[0];
 			messages.RemoveAt(0);
 			LoadJsonRots( msg );
-//			Debug.Log ("color msg = "+msg.ToString());
+			Debug.Log ("color msg = "+msg.ToString());
 		}
 	}
 
@@ -76,8 +76,8 @@ public class RabbitMQColorMapper : MonoBehaviour {
 
 		else if (selfID == "3")
 		{
-			colorIDP1 = nodesAll["color"].AsInt;
-			colorIDP2 = nodesAll["color"].AsInt;
+			if(nodesAll["id"].AsInt == 1)colorIDP1 = nodesAll["color"].AsInt;
+			if(nodesAll["id"].AsInt == 2)colorIDP2 = nodesAll["color"].AsInt;
 		}
 
 

@@ -182,7 +182,6 @@ GameObject:
   - 20: {fileID: 53554005}
   - 124: {fileID: 53554004}
   - 92: {fileID: 53554003}
-  - 81: {fileID: 53554002}
   m_Layer: 0
   m_Name: Camera4
   m_TagString: Untagged
@@ -202,13 +201,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2126104068}
   m_RootOrder: 3
---- !u!81 &53554002
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 53554000}
-  m_Enabled: 1
 --- !u!92 &53554003
 Behaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.149
+  serverIp: 192.168.1.100
   topicName: wise.mocap.color
 --- !u!114 &75435622
 MonoBehaviour:
@@ -370,7 +362,6 @@ GameObject:
   - 20: {fileID: 90277463}
   - 124: {fileID: 90277462}
   - 92: {fileID: 90277461}
-  - 81: {fileID: 90277460}
   m_Layer: 0
   m_Name: Camera2
   m_TagString: Untagged
@@ -378,13 +369,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &90277460
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 90277459}
-  m_Enabled: 1
 --- !u!92 &90277461
 Behaviour:
   m_ObjectHideFlags: 0
@@ -583,6 +567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &142167855
 ParticleSystem:
@@ -2607,6 +2593,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
 --- !u!65 &391003436
 BoxCollider:
@@ -4440,6 +4428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
 --- !u!65 &486909060
 BoxCollider:
@@ -6045,6 +6035,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &500639610
 ParticleSystem:
@@ -7856,6 +7848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
 --- !u!198 &635100144
 ParticleSystem:
@@ -9561,6 +9555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!65 &696853923
 BoxCollider:
@@ -11208,7 +11204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.149
+  serverIp: 192.168.1.100
   topicName: wise.mocap.pose
 --- !u!114 &749677945
 MonoBehaviour:
@@ -11222,7 +11218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e701525cedb4d01b17a442eabbd558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfID: 2
+  selfID: 3
   isDebug: 1
   rabbitServer: {fileID: 749677944}
   skeletonObj:
@@ -11688,6 +11684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
 --- !u!198 &864437284
 ParticleSystem:
@@ -13351,6 +13349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &895242415
 ParticleSystem:
@@ -15191,6 +15191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &946396422
 ParticleSystem:
@@ -16816,6 +16818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &1012761324
 ParticleSystem:
@@ -18449,7 +18453,6 @@ GameObject:
   - 20: {fileID: 1083335851}
   - 124: {fileID: 1083335850}
   - 92: {fileID: 1083335849}
-  - 81: {fileID: 1083335848}
   m_Layer: 0
   m_Name: Camera3
   m_TagString: Untagged
@@ -18469,13 +18472,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2126104068}
   m_RootOrder: 2
---- !u!81 &1083335848
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1083335846}
-  m_Enabled: 1
 --- !u!92 &1083335849
 Behaviour:
   m_ObjectHideFlags: 0
@@ -18572,7 +18568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOnLoad: 1
   AskOnLoad: 0
-  serverIp: 192.168.1.149
+  serverIp: 192.168.1.100
   topicName: wise.mocap.position
 --- !u!114 &1098041986
 MonoBehaviour:
@@ -18588,7 +18584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rabbitServer: {fileID: 1098041985}
   userPlayer: {fileID: 1591988926}
-  playerIndex: 2
+  playerIndex: 1
   isPlayerIndexSettingUp: 0
   movePlayers:
   - {fileID: 1517934257}
@@ -18777,6 +18773,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1151082611}
   - 114: {fileID: 1151082612}
+  - 82: {fileID: 1151082613}
   m_Layer: 0
   m_Name: RabblitMQ
   m_TagString: Untagged
@@ -18812,6 +18809,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d6b06ec7050a840bf89c46dc093e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1151082613
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151082610}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1ff0c1e247a6a6a438b8785928bc4452, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1156272183
 GameObject:
   m_ObjectHideFlags: 0
@@ -18952,7 +19023,6 @@ GameObject:
   - 20: {fileID: 1167253485}
   - 124: {fileID: 1167253484}
   - 92: {fileID: 1167253483}
-  - 81: {fileID: 1167253482}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: Untagged
@@ -18960,13 +19030,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1167253482
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1167253481}
-  m_Enabled: 1
 --- !u!92 &1167253483
 Behaviour:
   m_ObjectHideFlags: 0
@@ -19256,6 +19319,134 @@ Prefab:
       propertyPath: main_scenes.Array.data[1]
       value: 
       objectReference: {fileID: 2126104067}
+    - target: {fileID: 11453174, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11400904, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11496096, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11434710, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11469540, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11405994, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11448732, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11440116, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11474330, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11430564, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11404164, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11429788, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11483332, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11447616, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11476894, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11407478, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: origShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+    - target: {fileID: 11453174, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11400904, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11496096, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11434710, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11469540, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11405994, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11448732, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11440116, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11474330, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11430564, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11404164, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11429788, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11483332, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11447616, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11476894, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
+    - target: {fileID: 11407478, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
+      propertyPath: tranShader
+      value: 
+      objectReference: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
   m_IsPrefabParent: 0
@@ -19313,7 +19504,6 @@ GameObject:
   - 20: {fileID: 1241135510}
   - 124: {fileID: 1241135509}
   - 92: {fileID: 1241135508}
-  - 81: {fileID: 1241135507}
   m_Layer: 0
   m_Name: Camera4
   m_TagString: Untagged
@@ -19321,13 +19511,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &1241135507
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1241135506}
-  m_Enabled: 1
 --- !u!92 &1241135508
 Behaviour:
   m_ObjectHideFlags: 0
@@ -20007,6 +20190,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1489614294}
   - 114: {fileID: 1489614293}
+  - 81: {fileID: 1489614295}
   m_Layer: 0
   m_Name: CamGroup
   m_TagString: Untagged
@@ -20049,6 +20233,13 @@ Transform:
   - {fileID: 2126104068}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!81 &1489614295
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489614292}
+  m_Enabled: 1
 --- !u!1 &1517934254
 GameObject:
   m_ObjectHideFlags: 0
@@ -21787,6 +21978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!65 &1910861744
 BoxCollider:
@@ -23426,6 +23619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &1939258328
 ParticleSystem:
@@ -25068,7 +25263,6 @@ GameObject:
   - 20: {fileID: 1951926392}
   - 124: {fileID: 1951926391}
   - 92: {fileID: 1951926390}
-  - 81: {fileID: 1951926389}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: Untagged
@@ -25088,13 +25282,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2126104068}
   m_RootOrder: 0
---- !u!81 &1951926389
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1951926387}
-  m_Enabled: 1
 --- !u!92 &1951926390
 Behaviour:
   m_ObjectHideFlags: 0
@@ -25307,6 +25494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &1998471488
 ParticleSystem:
@@ -26835,7 +27024,6 @@ GameObject:
   - 20: {fileID: 2012492565}
   - 124: {fileID: 2012492564}
   - 92: {fileID: 2012492563}
-  - 81: {fileID: 2012492562}
   m_Layer: 0
   m_Name: Camera3
   m_TagString: Untagged
@@ -26843,13 +27031,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &2012492562
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2012492561}
-  m_Enabled: 1
 --- !u!92 &2012492563
 Behaviour:
   m_ObjectHideFlags: 0
@@ -27041,6 +27222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!65 &2060701313
 BoxCollider:
@@ -28739,6 +28922,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!198 &2073026679
 ParticleSystem:
@@ -30377,6 +30562,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
+  tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
 --- !u!65 &2134996748
 BoxCollider:
@@ -31905,7 +32092,6 @@ GameObject:
   - 20: {fileID: 2140279215}
   - 124: {fileID: 2140279214}
   - 92: {fileID: 2140279213}
-  - 81: {fileID: 2140279212}
   m_Layer: 0
   m_Name: Camera2
   m_TagString: Untagged
@@ -31925,13 +32111,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2126104068}
   m_RootOrder: 1
---- !u!81 &2140279212
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2140279210}
-  m_Enabled: 1
 --- !u!92 &2140279213
 Behaviour:
   m_ObjectHideFlags: 0

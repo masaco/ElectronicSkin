@@ -30,6 +30,12 @@ public class MQMapperManager : MonoBehaviour {
 
 	void Awake ()
 	{
+		#if !UNITY_EDITOR
+		if ( selfID != 3 )
+			if (PlayerPrefs.HasKey ("PlayerID"))
+				selfID = PlayerPrefs.GetInt ("PlayerID");
+		#endif
+
 		mappers = new MQMapperItem[skeletonObj.Length][];
 //		mappers = new MQMapperItem[2][];
 
@@ -48,7 +54,9 @@ public class MQMapperManager : MonoBehaviour {
 			skeletonRoot[0] = skeletonRoot[1];
 			skeletonRoot[1] = tmpRoot;
 		}
-			
+
+		// find transforms in skeletonObj
+		ResetSource ();
 	}
 
 	// Use this for initialization
@@ -57,9 +65,6 @@ public class MQMapperManager : MonoBehaviour {
 
 		//如果自己是1 對方就是2
 		otherID = (selfID == 1)?2:1;
-
-		// find transforms in skeletonObj
-		ResetSource ();
 
 	}
 	
@@ -228,8 +233,9 @@ public class MQMapperManager : MonoBehaviour {
 		// lower find
 		for( int i=0; i< obj.childCount; i++ )
 		{
-			if( obj.GetChild(i).name.ToLower() == lowerSearchName )
-				result = obj.GetChild(i);
+			if (obj.GetChild (i).name.ToLower () == lowerSearchName) {
+				result = obj.GetChild (i);
+			}
 		}
 		
 		

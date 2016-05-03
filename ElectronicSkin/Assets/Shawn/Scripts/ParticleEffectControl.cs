@@ -34,8 +34,8 @@ public class ParticleEffectControl : MonoBehaviour {
 	private ParticleSystem ps;
 	private Renderer psRenderer;
 	private ParticleSystem.Particle[] particle;
-	private Shader origShader;
-	private Shader tranShader;
+	public Shader origShader;
+	public Shader tranShader;
 
 	private float EffectDistance = 1f;
 
@@ -75,8 +75,8 @@ public class ParticleEffectControl : MonoBehaviour {
 
 	public void Init(MainEffectControl mCtrl)
 	{
-		origShader = Shader.Find("Particles/Additive (Soft)");
-		tranShader = Shader.Find("Particles/Additive");
+//		origShader = Shader.Find("Particles/Additive (Soft)");
+//		tranShader = Shader.Find("Particles/Additive");
 		#region InitMainEffectControl
 		meshCtrl = mCtrl;
 		colliderID = meshCtrl.ID.ToString();

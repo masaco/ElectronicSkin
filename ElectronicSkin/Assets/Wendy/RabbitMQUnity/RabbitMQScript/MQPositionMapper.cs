@@ -57,6 +57,10 @@ public class MQPositionMapper : MonoBehaviour {
 	
 	void Awake ()
 	{
+		#if !UNITY_EDITOR
+		if (PlayerPrefs.HasKey ("PlayerID"))
+			playerIndex = PlayerPrefs.GetInt ("PlayerID");
+		#endif
 		// for setup convient
 		playerIndex -= 1;
 		SetupPlayerIndex();
@@ -93,7 +97,7 @@ public class MQPositionMapper : MonoBehaviour {
 			messages.RemoveAt(0);
 			LoadJsonPos( msg );
 
-			Debug.Log (msg);
+			Debug.Log ("position : "+ msg);
 			
 			// 限制每個 frame 最多讀取幾筆資料
 			// 防止一個 frame 裡面有太多比資料，造成程式 lag

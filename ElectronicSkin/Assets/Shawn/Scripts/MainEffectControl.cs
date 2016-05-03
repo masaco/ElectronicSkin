@@ -113,11 +113,11 @@ public class MainEffectControl : MonoBehaviour {
 						break;
 					case "LeftUpperArm": 
 						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).transform;
-						peCtrl.name = "leftForeArm"; 
+//						peCtrl.name = "leftForeArm"; 
 						break;
 					case "LeftLowerArm": 
 						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).transform; 
-						peCtrl.name = "leftArm"; 
+//						peCtrl.name = "leftArm"; 
 						break;
 					case "LeftHand": 
 						peCtrl.transform.parent = Anim.GetBoneTransform(HumanBodyBones.LeftHand).transform;

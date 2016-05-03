@@ -7,7 +7,7 @@ public class ColliderManager : MonoBehaviour {
 
 	public GameObject roadIDObj;
 	private string[] touchPart;
-	private string selfID ;
+	private string selfID = "" ;
 	public RabbitMQSenderServer sender;
 
 	//碰撞部位的ID
@@ -102,12 +102,16 @@ public class ColliderManager : MonoBehaviour {
 			touchPart[1] = toLowerFirstChar(touchPart[1]);
 
 //			Debug.Log("touchPart:"+touchPart[1]);
-			string actionData;
-			actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":500,\"times\":1}}}}}]";
-			sender.SendMessageToServer(actionData);
-			vibrateTimer = vibrateInterval * 0.001f; //轉成毫秒
-//			Debug.Log(actionData);
 
+			if (!selfID.Equals ("")) 
+			{
+				string actionData;
+				actionData = "[{\"id\":\"user" + selfID + "\",\"data\":{\""+ touchPart[1] +"\":{\"action\":{\"vibrate\":{\"duration\":500,\"interval\":500,\"times\":1}}}}}]";
+				sender.SendMessageToServer(actionData);
+				vibrateTimer = vibrateInterval * 0.001f; //轉成毫秒
+				//			Debug.Log(actionData);
+
+			}
 		}
 	}
 
