@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -2643,6 +2644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
@@ -4478,6 +4480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
@@ -6085,6 +6088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -7898,6 +7902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
@@ -9605,6 +9610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -11837,6 +11843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 1
@@ -13502,6 +13509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -15344,6 +15352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -16971,6 +16980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -19230,7 +19240,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11496664, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
       propertyPath: select_scenes.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 473836, guid: 9ccb7d6db3067774c9b491d8992a0315, type: 2}
       propertyPath: m_LocalPosition.x
@@ -20622,14 +20632,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1601581837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601581836}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df2ea7d15da2bdf459999dbfd3ca69a0, type: 3}
   m_Name: 
@@ -21995,6 +22005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -23636,6 +23647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -25433,6 +25445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -27186,6 +27199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -28886,6 +28900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0
@@ -30495,6 +30510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshID: 
+  Colors: []
   origShader: {fileID: 4800000, guid: f343cf598538c9045b172d85c8fe4eea, type: 3}
   tranShader: {fileID: 4800000, guid: c79fdb3d7ac54c04eadb34ee1bd17838, type: 3}
   IsDetectObj: 0

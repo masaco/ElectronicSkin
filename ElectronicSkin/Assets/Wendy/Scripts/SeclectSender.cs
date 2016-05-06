@@ -7,6 +7,9 @@ public class SeclectSender : MonoBehaviour {
 	private string selfID ;
 	public RabbitMQSenderServer sender;
 
+	private float waitTime = 2.0f;
+	private float waitTimer = 0f;
+
 	private bool isReady;
 
 	// Use this for initialization
@@ -17,6 +20,7 @@ public class SeclectSender : MonoBehaviour {
 
 		MQMapperManager roadID = roadIDObj.GetComponent<MQMapperManager>();
 		selfID = roadID.selfID.ToString();	
+		waitTimer = waitTime;
 	}
 
 	// Update is called once per frame
@@ -29,16 +33,25 @@ public class SeclectSender : MonoBehaviour {
   				"colorID":"1"
 		 	}
 		 */
-		if(selfID == "1")
-		{
-			ColorDataSender(RabbitMQColorMapper.colorIDP1);
-		}
-		else if(selfID == "2" )
-		{
-			ColorDataSender(RabbitMQColorMapper.colorIDP2);
-		}
 
+		waitTimer -= Time.deltaTime;
 
+//		Debug.Log ("waitTImer :"+ waitTimer);
+
+		if (waitTimer < 0) 
+		{
+			if (selfID == "1") 
+			{
+				ColorDataSender (RabbitMQColorMapper.colorIDP1);
+			} 
+			else if (selfID == "2") 
+			{
+				ColorDataSender (RabbitMQColorMapper.colorIDP2);
+			}
+			waitTimer = waitTime;
+		} 
+
+			
 	}
 
 	public void ColorDataSender(int colorID)
@@ -47,6 +60,8 @@ public class SeclectSender : MonoBehaviour {
 
 		string colorData;
 		colorData = "{\"id\":\""+ selfID + "\",\"color\":\"" + colorID +"\"}";
+
+
 		sender.SendMessageToServer(colorData);
 
 //		Debug.Log("colorData = " + colorData );
